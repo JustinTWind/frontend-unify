@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unify - Gestor Financiero</title>
+    <link rel="icon" type="image/png" href="Logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ========================================
+         PAGINA DE LOGIN Y REGISTRO
+         ======================================== -->
+    <div id="pagina-login" class="pagina-login">
+        <div class="login-contenedor">
+            <div class="login-logo">
+                <img src="Logo.png" alt="Unify Logo" width="60" height="60">
+                <h1>Unify</h1>
+                <p>Tu gestor financiero personal</p>
+            </div>
+
+            <!-- Formulario de Login -->
+            <form id="form-login" class="form-auth">
+                <h2>Iniciar Sesión</h2>
+                
+                <div class="input-grupo">
+                    <label for="login-email">Correo electrónico</label>
+                    <input type="email" id="login-email" placeholder="tucorreo@ejemplo.com" required>
+                </div>
+                
+                <div class="input-grupo">
+                    <label for="login-password">Contraseña</label>
+                    <input type="password" id="login-password" placeholder="Tu contraseña" required>
+                </div>
+                
+                <button type="submit" class="boton-auth">Entrar</button>
+                
+                <p class="auth-link">
+                    ¿No tienes cuenta? 
+                    <a href="#" id="btn-mostrar-registro">Regístrate aquí</a>
+                </p>
+            </form>
+
+            <!-- Formulario de Registro -->
+            <form id="form-registro" class="form-auth" style="display: none;">
+                <h2>Crear Cuenta</h2>
+                
+                <div class="input-grupo">
+                    <label for="registro-nombre">Nombre completo</label>
+                    <input type="text" id="registro-nombre" placeholder="Tu nombre" required>
+                </div>
+                
+                <div class="input-grupo">
+                    <label for="registro-email">Correo electrónico</label>
+                    <input type="email" id="registro-email" placeholder="tucorreo@ejemplo.com" required>
+                </div>
+                
+                <div class="input-grupo">
+                    <label for="registro-password">Contraseña</label>
+                    <input type="password" id="registro-password" placeholder="Minimo 4 caracteres" required>
+                </div>
+                
+                <div class="input-grupo">
+                    <label for="registro-confirm-password">Confirmar contraseña</label>
+                    <input type="password" id="registro-confirm-password" placeholder="Repite tu contraseña" required>
+                </div>
+                
+                <button type="submit" class="boton-auth">Crear cuenta</button>
+                
+                <p class="auth-link">
+                    ¿Ya tienes cuenta? 
+                    <a href="#" id="btn-mostrar-login">Inicia sesión</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================
+         PAGINA PRINCIPAL DE LA APLICACION
+         ======================================== -->
+    <div id="pagina-principal" style="display: none;">
+
+        <input type="checkbox" id="toggle-modal" hidden>
+
+        <header class="cabecera">
+            <div class="contenedor cabecera-contenido">
+                <div class="logo">
+                    <img src="Logo.png" alt="Unify Logo" width="40" height="40">
+                    <span>Unify</span>
+                </div>
+                <div class="cabecera-derecha">
+                    <span class="saludo">Hola, <strong id="nombre-usuario">Usuario</strong></span>
+                    <label for="toggle-modal" class="boton-primario">Nueva Transacción</label>
+                    <button id="btn-cerrar-sesion" class="boton-cerrar-sesion">Salir</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="contenedor">
+            
+            <section class="resumen">
+                <div class="tarjeta">
+                    <header>
+                        <span>Entradas</span>
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="15" stroke="#00B37E" stroke-width="2"/>
+                            <path d="M16 10V22M10 16L16 10L22 16" stroke="#00B37E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </header>
+                    <strong>COP$ 0,00</strong>
+                </div>
+                <div class="tarjeta">
+                    <header>
+                        <span>Salidas</span>
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="15" stroke="#F75A68" stroke-width="2"/>
+                            <path d="M16 10V22M10 16L16 22L22 16" stroke="#F75A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </header>
+                    <strong>COP$ 0,00</strong>
+                </div>
+                <div class="tarjeta total">
+                    <header>
+                        <span>Total</span>
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 6V26M10 10H22M10 22H22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 6C13 6 11 8 11 11C11 14 13 16 16 16C19 16 21 18 21 21C21 24 19 26 16 26" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </header>
+                    <strong>COP$ 0,00</strong>
+                </div>
+            </section>
+
+            <section class="busqueda">
+                <input type="text" placeholder="Busca una transacción">
+                <button class="boton-buscar">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="9" cy="9" r="7" stroke="#00B37E" stroke-width="2"/>
+                        <path d="M14 14L18 18" stroke="#00B37E" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Buscar
+                </button>
+            </section>
+
+            <section class="tabla-contenedor">
+                <table class="tabla-transacciones">
+                    <tbody>
+                        <!-- Las transacciones se cargan dinamicamente con JavaScript -->
+                    </tbody>
+                </table>
+            </section>
+
+        </main>
+
+        <div class="modal-overlay">
+            <div class="modal-contenido">
+                <div class="modal-header">
+                    <h2>Nueva transacción</h2>
+                    <label for="toggle-modal" class="cerrar-modal">✕</label>
+                </div>
+                
+                <form class="formulario">
+                    <input type="text" id="input-descripcion" placeholder="Descripción" required>
+                    <input type="number" id="input-valor" placeholder="Valor" min="0" step="100" required>
+                    <input type="text" id="input-categoria" placeholder="Categoria" required>
+                    
+                    <div class="tipo-transaccion">
+                        <label class="radio-box">
+                            <input type="radio" name="tipo" value="entrada">
+                            <div class="caja entrada">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="#00B37E" stroke-width="2"/>
+                                    <path d="M12 8V16M8 12L12 8L16 12" stroke="#00B37E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Entrada</span>
+                            </div>
+                        </label>
+                        <label class="radio-box">
+                            <input type="radio" name="tipo" value="salida">
+                            <div class="caja salida">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="#F75A68" stroke-width="2"/>
+                                    <path d="M12 8V16M8 12L12 16L16 12" stroke="#F75A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Salida</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="boton-registrar">Registrar</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts de JavaScript -->
+    <!-- Los cargamos en orden porque unos dependen de otros -->
+    <script src="js/storage.js"></script>
+    <script src="js/usuarios.js"></script>
+    <script src="js/transacciones.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>
