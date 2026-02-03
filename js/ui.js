@@ -1,0 +1,115 @@
+// ========================================
+//     MODULO DE INTERFAZ DE USUARIO
+// ========================================
+
+function formatearDinero(numero) {
+    const numeroFormateado = numero.toLocaleString("es-CO", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+    
+    return "COP$ " + numeroFormateado;
+}
+
+function mostrarTransacciones(transacciones) {
+    const tbody = document.querySelector(".tabla-transacciones tbody");
+    
+    tbody.innerHTML = "";
+    
+    if (transacciones.length === 0) {
+        const filaVacia = document.createElement("tr");
+        filaVacia.innerHTML = '<td colspan="5" style="text-align: center;">No hay transacciones registradas</td>';
+        tbody.appendChild(filaVacia);
+        return;
+    }
+    
+    for (let i = 0; i < transacciones.length; i++) {
+        const transaccion = transacciones[i];
+        
+        const fila = document.createElement("tr");
+        
+        let claseValor = "";
+        let valorTexto = "";
+        
+        if (transaccion.tipo === "entrada") {
+            claseValor = "entrada";
+            valorTexto = formatearDinero(transaccion.valor);
+        } else {
+            claseValor = "salida";
+            valorTexto = "- " + formatearDinero(transaccion.valor);
+        }
+        
+        fila.innerHTML = 
+            '<td width="40%">' + transaccion.descripcion + '</td>' +
+            '<td class="' + claseValor + '">' + valorTexto + '</td>' +
+            '<td>' + transaccion.categoria + '</td>' +
+            '<td>' + transaccion.fecha + '</td>' +
+            '<td><button class="boton-eliminar" data-id="' + transaccion.id + '">✕</button></td>';
+        
+        tbody.appendChild(fila);
+    }
+    
+    agregarEventosEliminar();
+}
+
+function agregarEventosEliminar() {
+    const botones = document.querySelectorAll(".boton-eliminar");
+    
+    for (let i = 0; i < botones.length; i++) {
+        botones[i].addEventListener("click", function(evento) {
+            const id = parseInt(this.getAttribute("data-id"));
+            
+            const confirmar = confirm("¿Estas seguro de eliminar esta transaccion?");
+            
+            if (confirmar) {
+                eliminarTransaccion(id);
+                actualizarPagina();
+            }
+        });
+    }
+}
+
+function actualizarTotales() {
+    const entradas = calcularEntradas();
+    const salidas = calcularSalidas();
+    const balance = calcularBalance();
+    
+    const tarjetas = document.querySelectorAll(".tarjeta strong");
+    
+    tarjetas[0].textContent = formatearDinero(entradas);
+    tarjetas[1].textContent = formatearDinero(salidas);
+    tarjetas[2].textContent = formatearDinero(balance);
+}
+
+function actualizarPagina() {
+    const transacciones = obtenerTransacciones();
+    mostrarTransacciones(transacciones);
+    actualizarTotales();
+}
+
+function mostrarLogin() {
+    document.getElementById("pagina-login").style.display = "flex";
+    document.getElementById("pagina-principal").style.display = "none";
+}
+
+function mostrarPaginaPrincipal() {
+    document.getElementById("pagina-login").style.display = "none";
+    document.getElementById("pagina-principal").style.display = "block";
+    
+    const usuario = obtenerUsuarioActual();
+    if (usuario !== null) {
+        document.getElementById("nombre-usuario").textContent = usuario.nombre;
+    }
+    
+    actualizarPagina();
+}
+
+function mostrarFormularioRegistro() {
+    document.getElementById("form-login").style.display = "none";
+    document.getElementById("form-registro").style.display = "flex";
+}
+
+function mostrarFormularioLogin() {
+    document.getElementById("form-login").style.display = "flex";
+    document.getElementById("form-registro").style.display = "none";
+}
