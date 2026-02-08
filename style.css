@@ -491,8 +491,25 @@ button {
 }
 
 /* ========================================
-   ESTILOS PARA EL BOTON DE ELIMINAR
+   ESTILOS PARA LOS BOTONES DE ACCIONES
    ======================================== */
+
+.boton-editar {
+    background: transparent;
+    border: none;
+    color: #7C7C8A;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+    margin-right: 0.5rem;
+}
+
+.boton-editar:hover {
+    background: var(--green);
+    color: var(--white);
+}
 
 .boton-eliminar {
     background: transparent;

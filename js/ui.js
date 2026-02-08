@@ -54,13 +54,17 @@ function mostrarTransacciones(transacciones) {
             '<td class="' + claseValor + '">' + valorTexto + '</td>' +
             '<td>' + transaccion.categoria + '</td>' +
             '<td>' + transaccion.fecha + '</td>' +
-            '<td><button class="boton-eliminar" data-id="' + transaccion.id + '">✕</button></td>';
+            '<td>' +
+                '<button class="boton-editar" data-id="' + transaccion.id + '">✎</button>' +
+                '<button class="boton-eliminar" data-id="' + transaccion.id + '">✕</button>' +
+            '</td>';
         
         tbody.appendChild(fila);
     }
     
-    // agregamos eventos a los botones de eliminar
+    // agregamos eventos a los botones de eliminar y editar
     agregarEventosEliminar();
+    agregarEventosEditar();
 }
 
 // funcion para agregar eventos de eliminar a los botones
@@ -80,6 +84,60 @@ function agregarEventosEliminar() {
             }
         });
     }
+}
+
+// funcion para agregar eventos de editar a los botones
+function agregarEventosEditar() {
+    const botones = document.querySelectorAll(".boton-editar");
+    
+    for (let i = 0; i < botones.length; i++) {
+        botones[i].addEventListener("click", function() {
+            const id = parseInt(this.getAttribute("data-id"));
+            cargarTransaccionEnFormulario(id);
+        });
+    }
+}
+
+// funcion para cargar los datos de una transaccion en el formulario para editarla
+function cargarTransaccionEnFormulario(id) {
+    const transaccion = obtenerTransaccionPorId(id);
+    
+    if (transaccion === null) {
+        alert("No se encontro la transaccion");
+        return;
+    }
+    
+    // llenamos el formulario con los datos de la transaccion
+    document.getElementById("input-descripcion").value = transaccion.descripcion;
+    document.getElementById("input-valor").value = transaccion.valor;
+    document.getElementById("input-categoria").value = transaccion.categoria;
+    
+    // seleccionamos el tipo de transaccion
+    const radios = document.querySelectorAll('input[name="tipo"]');
+    for (let i = 0; i < radios.length; i++) {
+        if (radios[i].value === transaccion.tipo) {
+            radios[i].checked = true;
+        } else {
+            radios[i].checked = false;
+        }
+    }
+    
+    // cambiamos el titulo y boton del modal para indicar que estamos editando
+    document.querySelector(".modal-header h2").textContent = "Editar transacción";
+    document.querySelector(".boton-registrar").textContent = "Guardar cambios";
+    
+    // guardamos el id de la transaccion que estamos editando
+    transaccionEditandoId = id;
+    
+    // abrimos el modal
+    document.getElementById("toggle-modal").checked = true;
+}
+
+// funcion para resetear el modal al modo de nueva transaccion
+function resetearModal() {
+    document.querySelector(".modal-header h2").textContent = "Nueva transacción";
+    document.querySelector(".boton-registrar").textContent = "Registrar";
+    transaccionEditandoId = null;
 }
 
 // funcion para actualizar los totales en las tarjetas

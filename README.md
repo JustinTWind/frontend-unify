@@ -1,6 +1,6 @@
 # 💰 Unify - Gestor Financiero Personal
 
-Unify es una aplicación web para gestionar tus finanzas personales. Permite registrar ingresos y gastos, visualizar el balance total y buscar transacciones. Los datos se guardan en el navegador usando **localStorage** y **sessionStorage**.
+Unify es una aplicación web para gestionar tus finanzas personales. Permite registrar, editar y eliminar ingresos y gastos, visualizar el balance total y buscar transacciones. Los datos se guardan en el navegador usando **localStorage** y **sessionStorage**.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
@@ -23,7 +23,7 @@ Unify es una aplicación web para gestionar tus finanzas personales. Permite reg
 ## ✨ Características
 
 - 🔐 **Sistema de autenticación**: Registro e inicio de sesión de usuarios
-- 💵 **Gestión de transacciones**: Agregar y eliminar ingresos/gastos
+- 💵 **Gestión de transacciones**: Agregar, editar y eliminar ingresos/gastos
 - 🔍 **Búsqueda**: Filtrar transacciones por descripción o categoría
 - 📊 **Resumen financiero**: Visualización de entradas, salidas y balance total
 - 💾 **Persistencia de datos**: Los datos se guardan en el navegador (localStorage)
@@ -56,8 +56,8 @@ Proyecto-Integrador-FrontEnd/
 | `style.css` | Todos los estilos CSS con variables para colores y diseño responsive |
 | `js/storage.js` | Módulo que encapsula las operaciones con localStorage y sessionStorage |
 | `js/usuarios.js` | Maneja el registro de usuarios y la autenticación |
-| `js/transacciones.js` | Contiene las funciones para crear, leer, buscar y eliminar transacciones |
-| `js/ui.js` | Funciones para actualizar el DOM (mostrar transacciones, totales, etc.) |
+| `js/transacciones.js` | Contiene las funciones para crear, leer, editar, buscar y eliminar transacciones |
+| `js/ui.js` | Funciones para actualizar el DOM (mostrar transacciones, totales, edición, etc.) |
 | `js/app.js` | Punto de entrada que conecta los eventos con las funciones |
 
 ---
@@ -136,6 +136,12 @@ obtenerTransacciones()
 // Agregar una nueva transacción
 agregarTransaccion(descripcion, valor, categoria, tipo)
 
+// Editar una transacción existente por ID
+editarTransaccion(id, descripcion, valor, categoria, tipo)
+
+// Obtener una transacción específica por ID
+obtenerTransaccionPorId(id)
+
 // Eliminar una transacción por ID
 eliminarTransaccion(id)
 
@@ -168,8 +174,14 @@ Actualiza el DOM con los datos:
 // Formatear números como moneda colombiana
 formatearDinero(numero)  // Retorna: "COP$ 3.500.000,00"
 
-// Mostrar transacciones en la tabla
+// Mostrar transacciones en la tabla (con botones de editar y eliminar)
 mostrarTransacciones(transacciones)
+
+// Cargar datos de una transacción en el formulario para editarla
+cargarTransaccionEnFormulario(id)
+
+// Resetear el modal al modo de nueva transacción
+resetearModal()
 
 // Actualizar los totales en las tarjetas
 actualizarTotales()
@@ -185,10 +197,15 @@ Conecta los eventos del DOM con las funciones de los módulos:
 
 - Evento `submit` del formulario de login
 - Evento `submit` del formulario de registro
-- Evento `submit` del formulario de transacciones
+- Evento `submit` del formulario de transacciones (crear o editar según el estado)
 - Evento `click` del botón de búsqueda
 - Evento `click` del botón de cerrar sesión
+- Evento `change` del modal para resetear al cerrarlo
+- Evento `click` del botón "Nueva Transacción" para resetear el modo edición
 - Eventos para cambiar entre formularios
+
+**Variable global:**
+- `transaccionEditandoId`: Almacena el ID de la transacción que se está editando, o `null` si se está creando una nueva
 
 ---
 
@@ -224,6 +241,7 @@ Conecta los eventos del DOM con las funciones de los módulos:
         │ válidas?        │    │ Usuario puede:     │
         └─────────────────┘    │ - Ver transacciones│
               │      │         │ - Agregar nuevas   │
+              │      │         │ - Editar existentes│
              NO     SÍ         │ - Eliminar         │
               │      │         │ - Buscar           │
               ▼      │         │ - Cerrar sesión    │
@@ -258,13 +276,23 @@ Conecta los eventos del DOM con las funciones de los módulos:
 3. Si existe y la contraseña coincide, se guarda la sesión en sessionStorage
 4. Se muestra la página principal con las transacciones del usuario
 
-### Flujo de Transacciones:
+### Flujo de Nueva Transacción:
 
 1. Usuario hace clic en "Nueva Transacción"
-2. Se abre el modal con el formulario
+2. Se abre el modal con el formulario vacío
 3. Llena descripción, valor, categoría y tipo
 4. Se guarda en localStorage bajo la clave `transacciones_{userId}`
 5. Se actualiza la tabla y los totales
+
+### Flujo de Edición de Transacción:
+
+1. Usuario hace clic en el botón ✎ de una transacción existente
+2. Se abre el modal con los datos precargados de la transacción
+3. El título del modal cambia a "Editar transacción" y el botón a "Guardar cambios"
+4. El usuario modifica los campos que desee
+5. Al enviar, se actualiza la transacción en localStorage (sin cambiar su ID ni fecha)
+6. Se resetea el modal al modo de nueva transacción
+7. Se actualiza la tabla y los totales
 
 ---
 

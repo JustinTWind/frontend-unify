@@ -77,6 +77,40 @@ function eliminarTransaccion(id) {
     console.log("Transaccion eliminada con id: " + id);
 }
 
+// funcion para editar una transaccion existente
+function editarTransaccion(id, descripcion, valor, categoria, tipo) {
+    const transacciones = obtenerTransacciones();
+    
+    // buscamos la transaccion por id y actualizamos sus datos
+    for (let i = 0; i < transacciones.length; i++) {
+        if (transacciones[i].id === id) {
+            transacciones[i].descripcion = descripcion;
+            transacciones[i].valor = parseFloat(valor);
+            transacciones[i].categoria = categoria;
+            transacciones[i].tipo = tipo;
+            break;
+        }
+    }
+    
+    // guardamos las transacciones actualizadas
+    guardarTransacciones(transacciones);
+    
+    console.log("Transaccion editada: " + descripcion);
+}
+
+// funcion para obtener una transaccion por su id
+function obtenerTransaccionPorId(id) {
+    const transacciones = obtenerTransacciones();
+    
+    for (let i = 0; i < transacciones.length; i++) {
+        if (transacciones[i].id === id) {
+            return transacciones[i];
+        }
+    }
+    
+    return null;
+}
+
 // funcion para buscar transacciones
 function buscarTransacciones(termino) {
     const transacciones = obtenerTransacciones();

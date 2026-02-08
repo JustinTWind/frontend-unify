@@ -3,6 +3,9 @@
 // Aqui conectamos todo y manejamos los eventos
 // ========================================
 
+// variable para saber si estamos editando una transaccion
+let transaccionEditandoId = null;
+
 // esperamos a que cargue la pagina
 document.addEventListener("DOMContentLoaded", function() {
     console.log("Aplicacion cargada");
@@ -122,8 +125,16 @@ document.addEventListener("DOMContentLoaded", function() {
         
         const tipo = tipoSeleccionado.value;
         
-        // agregamos la transaccion
-        agregarTransaccion(descripcion, valor, categoria, tipo);
+        // verificamos si estamos editando o creando una transaccion
+        if (transaccionEditandoId !== null) {
+            // estamos editando
+            editarTransaccion(transaccionEditandoId, descripcion, valor, categoria, tipo);
+            alert("Transaccion editada correctamente!");
+        } else {
+            // estamos creando
+            agregarTransaccion(descripcion, valor, categoria, tipo);
+            alert("Transaccion agregada correctamente!");
+        }
         
         // actualizamos la pagina
         actualizarPagina();
@@ -131,10 +142,31 @@ document.addEventListener("DOMContentLoaded", function() {
         // limpiamos el formulario
         formTransaccion.reset();
         
+        // reseteamos el modal al modo de nueva transaccion
+        resetearModal();
+        
         // cerramos el modal
         document.getElementById("toggle-modal").checked = false;
-        
-        alert("Transaccion agregada correctamente!");
+    });
+    
+    // ========================================
+    // EVENTO PARA RESETEAR EL MODAL AL CERRARLO
+    // ========================================
+    
+    const toggleModal = document.getElementById("toggle-modal");
+    toggleModal.addEventListener("change", function() {
+        // si se cierra el modal, reseteamos al modo de nueva transaccion
+        if (!this.checked) {
+            resetearModal();
+            formTransaccion.reset();
+        }
+    });
+    
+    // cuando se hace click en "Nueva Transaccion", reseteamos por si estaba en modo edicion
+    const botonNuevaTransaccion = document.querySelector('.cabecera-derecha .boton-primario');
+    botonNuevaTransaccion.addEventListener("click", function() {
+        resetearModal();
+        formTransaccion.reset();
     });
     
     // ========================================
