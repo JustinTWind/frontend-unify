@@ -239,7 +239,6 @@ button {
     z-index: 999;
 }
 
-/* Logica del Checkbox Hack para mostrar el modal */
 #toggle-modal:checked ~ .modal-overlay {
     display: flex;
 }
@@ -350,10 +349,6 @@ button {
     background: var(--green-light);
 }
 
-/* ========================================
-   ESTILOS PARA LA PAGINA DE LOGIN
-   ======================================== */
-
 .pagina-login {
     min-height: 100vh;
     display: flex;
@@ -457,10 +452,6 @@ button {
     text-decoration: underline;
 }
 
-/* ========================================
-   ESTILOS PARA EL HEADER CON USUARIO
-   ======================================== */
-
 .cabecera-derecha {
     display: flex;
     align-items: center;
@@ -489,10 +480,6 @@ button {
     background: var(--red);
     color: var(--white);
 }
-
-/* ========================================
-   ESTILOS PARA LOS BOTONES DE ACCIONES
-   ======================================== */
 
 .boton-editar {
     background: transparent;

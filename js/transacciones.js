@@ -1,10 +1,4 @@
-// ========================================
-// MODULO DE TRANSACCIONES
-// Este modulo maneja las transacciones (gastos e ingresos)
-// ========================================
-
-// funcion para obtener las transacciones del usuario actual
-function obtenerTransacciones() {
+﻿function obtenerTransacciones() {
     const usuario = obtenerUsuarioActual();
     
     if (usuario === null) {
@@ -21,7 +15,6 @@ function obtenerTransacciones() {
     return transacciones;
 }
 
-// funcion para guardar las transacciones
 function guardarTransacciones(transacciones) {
     const usuario = obtenerUsuarioActual();
     
@@ -33,36 +26,29 @@ function guardarTransacciones(transacciones) {
     guardarEnLocalStorage("transacciones_" + usuario.id, transacciones);
 }
 
-// funcion para agregar una nueva transaccion
 function agregarTransaccion(descripcion, valor, categoria, tipo) {
-    // obtenemos las transacciones actuales
     const transacciones = obtenerTransacciones();
     
-    // creamos la nueva transaccion
     const nuevaTransaccion = {
         id: Date.now(),
         descripcion: descripcion,
         valor: parseFloat(valor),
         categoria: categoria,
-        tipo: tipo, // "entrada" o "salida"
+        tipo: tipo,
         fecha: new Date().toLocaleDateString()
     };
     
-    // agregamos al inicio del array para que aparezca primero
     transacciones.unshift(nuevaTransaccion);
     
-    // guardamos
     guardarTransacciones(transacciones);
     
     console.log("Transaccion agregada: " + descripcion);
     return nuevaTransaccion;
 }
 
-// funcion para eliminar una transaccion
 function eliminarTransaccion(id) {
     const transacciones = obtenerTransacciones();
     
-    // buscamos la transaccion y la eliminamos
     const nuevasTransacciones = [];
     
     for (let i = 0; i < transacciones.length; i++) {
@@ -71,17 +57,14 @@ function eliminarTransaccion(id) {
         }
     }
     
-    // guardamos las transacciones sin la eliminada
     guardarTransacciones(nuevasTransacciones);
     
     console.log("Transaccion eliminada con id: " + id);
 }
 
-// funcion para editar una transaccion existente
 function editarTransaccion(id, descripcion, valor, categoria, tipo) {
     const transacciones = obtenerTransacciones();
     
-    // buscamos la transaccion por id y actualizamos sus datos
     for (let i = 0; i < transacciones.length; i++) {
         if (transacciones[i].id === id) {
             transacciones[i].descripcion = descripcion;
@@ -92,13 +75,11 @@ function editarTransaccion(id, descripcion, valor, categoria, tipo) {
         }
     }
     
-    // guardamos las transacciones actualizadas
     guardarTransacciones(transacciones);
     
     console.log("Transaccion editada: " + descripcion);
 }
 
-// funcion para obtener una transaccion por su id
 function obtenerTransaccionPorId(id) {
     const transacciones = obtenerTransacciones();
     
@@ -111,7 +92,6 @@ function obtenerTransaccionPorId(id) {
     return null;
 }
 
-// funcion para buscar transacciones
 function buscarTransacciones(termino) {
     const transacciones = obtenerTransacciones();
     
@@ -119,7 +99,6 @@ function buscarTransacciones(termino) {
         return transacciones;
     }
     
-    // convertimos a minusculas para buscar sin importar mayusculas
     const terminoMinuscula = termino.toLowerCase();
     
     const resultados = [];
@@ -128,7 +107,6 @@ function buscarTransacciones(termino) {
         const descripcion = transacciones[i].descripcion.toLowerCase();
         const categoria = transacciones[i].categoria.toLowerCase();
         
-        // buscamos en descripcion y categoria
         if (descripcion.indexOf(terminoMinuscula) !== -1 || categoria.indexOf(terminoMinuscula) !== -1) {
             resultados.push(transacciones[i]);
         }
@@ -137,7 +115,6 @@ function buscarTransacciones(termino) {
     return resultados;
 }
 
-// funcion para calcular el total de entradas
 function calcularEntradas() {
     const transacciones = obtenerTransacciones();
     let total = 0;
@@ -151,7 +128,6 @@ function calcularEntradas() {
     return total;
 }
 
-// funcion para calcular el total de salidas
 function calcularSalidas() {
     const transacciones = obtenerTransacciones();
     let total = 0;
@@ -165,7 +141,6 @@ function calcularSalidas() {
     return total;
 }
 
-// funcion para calcular el balance total
 function calcularBalance() {
     const entradas = calcularEntradas();
     const salidas = calcularSalidas();

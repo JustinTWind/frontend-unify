@@ -12,9 +12,6 @@
 </head>
 <body>
 
-    <!-- ========================================
-         PAGINA DE LOGIN Y REGISTRO
-         ======================================== -->
     <div id="pagina-login" class="pagina-login">
         <div class="login-contenedor">
             <div class="login-logo">
@@ -23,7 +20,6 @@
                 <p>Tu gestor financiero personal</p>
             </div>
 
-            <!-- Formulario de Login -->
             <form id="form-login" class="form-auth">
                 <h2>Iniciar Sesión</h2>
                 
@@ -45,7 +41,6 @@
                 </p>
             </form>
 
-            <!-- Formulario de Registro -->
             <form id="form-registro" class="form-auth" style="display: none;">
                 <h2>Crear Cuenta</h2>
                 
@@ -79,9 +74,6 @@
         </div>
     </div>
 
-    <!-- ========================================
-         PAGINA PRINCIPAL DE LA APLICACION
-         ======================================== -->
     <div id="pagina-principal" style="display: none;">
 
         <input type="checkbox" id="toggle-modal" hidden>
@@ -149,7 +141,6 @@
             <section class="tabla-contenedor">
                 <table class="tabla-transacciones">
                     <tbody>
-                        <!-- Las transacciones se cargan dinamicamente con JavaScript -->
                     </tbody>
                 </table>
             </section>
@@ -198,8 +189,6 @@
 
     </div>
 
-    <!-- Scripts de JavaScript -->
-    <!-- Los cargamos en orden porque unos dependen de otros -->
     <script src="js/storage.js"></script>
     <script src="js/usuarios.js"></script>
     <script src="js/transacciones.js"></script>
