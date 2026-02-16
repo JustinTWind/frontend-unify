@@ -428,6 +428,8 @@ body {
 .transacciones-badge { border-color: var(--yellow-primary); color: var(--yellow-primary); }
 .ui-badge { border-color: var(--orange-primary); color: var(--orange-primary); }
 .app-badge { border-color: var(--green-primary); color: var(--green-primary); }
+.html-badge { border-color: #E44D26; color: #E44D26; }
+.fetch-badge { border-color: #61DAFB; color: #61DAFB; }
 
 .section-header h2 {
     font-size: 2.5rem;

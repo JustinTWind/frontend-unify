@@ -4,7 +4,7 @@
 // ========================================
 
 // Lista de secciones en orden
-const secciones = ['intro', 'arquitectura', 'storage', 'usuarios', 'transacciones', 'ui', 'app'];
+const secciones = ['intro', 'arquitectura', 'indexhtml', 'storage', 'usuarios', 'transacciones', 'ui', 'app', 'fetch'];
 
 // Estado actual
 let seccionActual = 'intro';
