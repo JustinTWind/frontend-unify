@@ -356,169 +356,70 @@
                 <div class="section-header">
                     <span class="section-badge html-badge">📄 Estructura HTML</span>
                     <h2>index.html</h2>
-                    <p>Estructura del documento principal - La base visual de la aplicación</p>
+                    <p>Documento principal con sistema de dos vistas</p>
                 </div>
 
-                <div class="content-card animate-fade-in">
-                    <h3>¿Qué es index.html?</h3>
-                    <p>
-                        El archivo <code>index.html</code> es el documento principal de nuestra aplicación.
-                        Define la <strong>estructura semántica</strong> de toda la interfaz, dividida en dos 
-                        vistas principales: la página de login y el dashboard principal.
-                    </p>
-                </div>
-
-                <div class="key-concept animate-fade-in delay-1">
-                    <div class="key-icon">🏗️</div>
-                    <div class="key-content">
-                        <h4>Sistema de Dos Páginas</h4>
-                        <p>
-                            La aplicación usa un patrón de <strong>Single Page Application (SPA)</strong> simple,
-                            donde mostramos u ocultamos secciones con CSS en lugar de cargar páginas diferentes.
-                        </p>
+                <div class="visual-structure animate-fade-in">
+                    <div class="structure-diagram">
+                        <div class="diagram-box login-box">
+                            <div class="box-header">
+                                <span class="box-icon">🔐</span>
+                                <h4>#pagina-login</h4>
+                            </div>
+                            <div class="box-content">
+                                <div class="mini-element">#form-login</div>
+                                <div class="mini-element">#form-registro</div>
+                            </div>
+                        </div>
+                        
+                        <div class="diagram-arrow">
+                            <span>JavaScript controla visibilidad</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="diagram-box dashboard-box">
+                            <div class="box-header">
+                                <span class="box-icon">📊</span>
+                                <h4>#pagina-principal</h4>
+                            </div>
+                            <div class="box-content">
+                                <div class="mini-element">header</div>
+                                <div class="mini-element">.resumen (3 cards)</div>
+                                <div class="mini-element">.busqueda</div>
+                                <div class="mini-element">.tabla-transacciones</div>
+                                <div class="mini-element">.modal-overlay</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="code-section animate-slide-up delay-2">
-                    <h3>📌 Estructura General</h3>
+                <div class="code-section animate-slide-up delay-1">
+                    <h3>📌 Estructura SPA</h3>
                     <div class="code-block-container">
                         <div class="code-header">
-                            <span class="file-name">index.html - Estructura principal</span>
+                            <span class="file-name">Sistema de vistas con clase .oculto</span>
                         </div>
                         <div class="code-block">
-                            <pre><code class="language-html"><span class="comment">&lt;!-- Vista de Login (oculta cuando el usuario inicia sesión) --&gt;</span>
-<span class="tag">&lt;div</span> <span class="attr">id=</span><span class="string">"pagina-login"</span><span class="tag">&gt;</span>
-    <span class="tag">&lt;form</span> <span class="attr">id=</span><span class="string">"form-login"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/form&gt;</span>
-    <span class="tag">&lt;form</span> <span class="attr">id=</span><span class="string">"form-registro"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/form&gt;</span>
-<span class="tag">&lt;/div&gt;</span>
+                            <pre><code class="language-html"><span class="comment">&lt;!-- Una sola página, dos vistas --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">id=</span><span class="string">"pagina-login"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">id=</span><span class="string">"pagina-principal"</span> <span class="attr">class=</span><span class="string">"oculto"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
 
-<span class="comment">&lt;!-- Vista Principal (oculta hasta que el usuario inicie sesión) --&gt;</span>
-<span class="tag">&lt;div</span> <span class="attr">id=</span><span class="string">"pagina-principal"</span> <span class="attr">class=</span><span class="string">"oculto"</span><span class="tag">&gt;</span>
-    <span class="tag">&lt;header&gt;</span>...<span class="tag">&lt;/header&gt;</span>
-    <span class="tag">&lt;main&gt;</span>...<span class="tag">&lt;/main&gt;</span>
-    <span class="tag">&lt;footer&gt;</span>...<span class="tag">&lt;/footer&gt;</span>
-<span class="tag">&lt;/div&gt;</span></code></pre>
+<span class="comment">&lt;!-- CSS: .oculto { display: none; } --&gt;</span>
+<span class="comment">&lt;!-- JS alterna la clase según el estado de sesión --&gt;</span></code></pre>
                         </div>
                     </div>
                 </div>
 
-                <div class="info-cards animate-fade-in delay-2">
-                    <div class="info-card highlight">
-                        <h4>🔐 Página de Login</h4>
-                        <div class="info-details">
-                            <p><strong>ID:</strong> <code>#pagina-login</code></p>
-                            <p>Contiene dos formularios para la autenticación:</p>
-                            <ul>
-                                <li><code>#form-login</code> - Iniciar sesión</li>
-                                <li><code>#form-registro</code> - Crear cuenta nueva</li>
-                            </ul>
-                            <p>Campos: email, contraseña (y nombre para registro)</p>
-                        </div>
-                    </div>
-                    <div class="info-card">
-                        <h4>📊 Página Principal</h4>
-                        <div class="info-details">
-                            <p><strong>ID:</strong> <code>#pagina-principal</code></p>
-                            <p>Dashboard con las siguientes secciones:</p>
-                            <ul>
-                                <li><code>&lt;header&gt;</code> - Logo, saludo, botones</li>
-                                <li><code>.resumen</code> - Tarjetas de totales</li>
-                                <li><code>.busqueda</code> - Barra de búsqueda</li>
-                                <li><code>.tabla-transacciones</code> - Lista de movimientos</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="code-section animate-slide-up delay-3">
-                    <h3>🎴 Componentes del Dashboard</h3>
-                    <div class="code-block-container">
-                        <div class="code-header">
-                            <span class="file-name">Header - Navegación principal</span>
-                        </div>
-                        <div class="code-block">
-                            <pre><code class="language-html"><span class="tag">&lt;header</span> <span class="attr">class=</span><span class="string">"header"</span><span class="tag">&gt;</span>
-  <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="string">"logo"</span><span class="tag">&gt;</span>
-    <span class="tag">&lt;svg&gt;</span>...<span class="tag">&lt;/svg&gt;</span>  <span class="comment">&lt;!-- Icono de Unify --&gt;</span>
-    <span class="tag">&lt;span&gt;</span>Unify<span class="tag">&lt;/span&gt;</span>
-  <span class="tag">&lt;/div&gt;</span>
-  
-  <span class="tag">&lt;span</span> <span class="attr">id=</span><span class="string">"saludo-usuario"</span><span class="tag">&gt;</span>Hola, Usuario<span class="tag">&lt;/span&gt;</span>
-  
-  <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="string">"header-botones"</span><span class="tag">&gt;</span>
-    <span class="tag">&lt;label</span> <span class="attr">for=</span><span class="string">"toggle-modal"</span><span class="tag">&gt;</span>Nueva transacción<span class="tag">&lt;/label&gt;</span>
-    <span class="tag">&lt;button</span> <span class="attr">id=</span><span class="string">"boton-cerrar-sesion"</span><span class="tag">&gt;</span>Cerrar sesión<span class="tag">&lt;/button&gt;</span>
-  <span class="tag">&lt;/div&gt;</span>
-<span class="tag">&lt;/header&gt;</span></code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="code-section animate-slide-up delay-3">
-                    <h3>💰 Tarjetas de Resumen</h3>
-                    <div class="code-block-container">
-                        <div class="code-header">
-                            <span class="file-name">Sección de resumen financiero</span>
-                        </div>
-                        <div class="code-block">
-                            <pre><code class="language-html"><span class="tag">&lt;section</span> <span class="attr">class=</span><span class="string">"resumen"</span><span class="tag">&gt;</span>
-  <span class="comment">&lt;!-- Tarjeta de Entradas --&gt;</span>
-  <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="string">"resumen-card entrada"</span><span class="tag">&gt;</span>
-    <span class="tag">&lt;h3&gt;</span>Entradas<span class="tag">&lt;/h3&gt;</span>
-    <span class="tag">&lt;span</span> <span class="attr">id=</span><span class="string">"total-entradas"</span><span class="tag">&gt;</span>$ 0<span class="tag">&lt;/span&gt;</span>
-  <span class="tag">&lt;/div&gt;</span>
-  
-  <span class="comment">&lt;!-- Tarjeta de Salidas --&gt;</span>
-  <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="string">"resumen-card salida"</span><span class="tag">&gt;</span>
-    <span class="tag">&lt;h3&gt;</span>Salidas<span class="tag">&lt;/h3&gt;</span>
-    <span class="tag">&lt;span</span> <span class="attr">id=</span><span class="string">"total-salidas"</span><span class="tag">&gt;</span>$ 0<span class="tag">&lt;/span&gt;</span>
-  <span class="tag">&lt;/div&gt;</span>
-  
-  <span class="comment">&lt;!-- Tarjeta de Balance Total --&gt;</span>
-  <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="string">"resumen-card total"</span><span class="tag">&gt;</span>
-    <span class="tag">&lt;h3&gt;</span>Total<span class="tag">&lt;/h3&gt;</span>
-    <span class="tag">&lt;span</span> <span class="attr">id=</span><span class="string">"balance-total"</span><span class="tag">&gt;</span>$ 0<span class="tag">&lt;/span&gt;</span>
-  <span class="tag">&lt;/div&gt;</span>
-<span class="tag">&lt;/section&gt;</span></code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="key-concept animate-fade-in delay-4">
-                    <div class="key-icon">🎯</div>
-                    <div class="key-content">
-                        <h4>IDs Importantes</h4>
-                        <p>
-                            Los elementos con <code>id</code> son accedidos por JavaScript para actualizar 
-                            dinámicamente la interfaz: <code>#total-entradas</code>, <code>#total-salidas</code>, 
-                            <code>#balance-total</code>, <code>#saludo-usuario</code>.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="code-section animate-slide-up delay-4">
-                    <h3>🔍 Modal de Nueva Transacción</h3>
-                    <div class="code-block-container">
-                        <div class="code-header">
-                            <span class="file-name">Modal con CSS puro (checkbox hack)</span>
-                        </div>
-                        <div class="code-block">
-                            <pre><code class="language-html"><span class="comment">&lt;!-- Checkbox oculto para controlar el modal --&gt;</span>
-<span class="tag">&lt;input</span> <span class="attr">type=</span><span class="string">"checkbox"</span> <span class="attr">id=</span><span class="string">"toggle-modal"</span> <span class="attr">hidden</span> <span class="tag">/&gt;</span>
-
-<span class="tag">&lt;div</span> <span class="attr">class=</span><span class="string">"modal-overlay"</span><span class="tag">&gt;</span>
-  <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="string">"modal-contenido"</span><span class="tag">&gt;</span>
-    <span class="tag">&lt;form</span> <span class="attr">class=</span><span class="string">"formulario"</span><span class="tag">&gt;</span>
-      <span class="tag">&lt;input</span> <span class="attr">id=</span><span class="string">"input-descripcion"</span> <span class="tag">/&gt;</span>
-      <span class="tag">&lt;input</span> <span class="attr">id=</span><span class="string">"input-valor"</span> <span class="tag">/&gt;</span>
-      <span class="tag">&lt;input</span> <span class="attr">id=</span><span class="string">"input-categoria"</span> <span class="tag">/&gt;</span>
-      <span class="comment">&lt;!-- Radio buttons para tipo --&gt;</span>
-      <span class="tag">&lt;input</span> <span class="attr">type=</span><span class="string">"radio"</span> <span class="attr">name=</span><span class="string">"tipo"</span> <span class="attr">value=</span><span class="string">"entrada"</span> <span class="tag">/&gt;</span>
-      <span class="tag">&lt;input</span> <span class="attr">type=</span><span class="string">"radio"</span> <span class="attr">name=</span><span class="string">"tipo"</span> <span class="attr">value=</span><span class="string">"salida"</span> <span class="tag">/&gt;</span>
-    <span class="tag">&lt;/form&gt;</span>
-  <span class="tag">&lt;/div&gt;</span>
-<span class="tag">&lt;/div&gt;</span></code></pre>
-                        </div>
+                <div class="ids-grid animate-fade-in delay-2">
+                    <h3>🎯 IDs Clave para JavaScript</h3>
+                    <div class="id-tags">
+                        <span class="id-tag green">#total-entradas</span>
+                        <span class="id-tag red">#total-salidas</span>
+                        <span class="id-tag blue">#balance-total</span>
+                        <span class="id-tag purple">#saludo-usuario</span>
+                        <span class="id-tag orange">#toggle-modal</span>
                     </div>
                 </div>
 
@@ -1275,166 +1176,88 @@ tbody.<span class="method">appendChild</span>(fila);</code></pre>
                 <div class="section-header">
                     <span class="section-badge fetch-badge">🌐 APIs Externas</span>
                     <h2>Fetch API</h2>
-                    <p>Comunicación con servidores - Obteniendo datos en tiempo real</p>
+                    <p>Peticiones HTTP asíncronas a servidores</p>
                 </div>
 
-                <div class="content-card animate-fade-in">
-                    <h3>¿Qué es Fetch API?</h3>
-                    <p>
-                        <code>fetch()</code> es una función nativa de JavaScript que permite hacer 
-                        <strong>peticiones HTTP</strong> a servidores externos. Es la forma moderna de 
-                        comunicarse con APIs y obtener datos dinámicos como tasas de cambio, clima, 
-                        o información de usuarios.
-                    </p>
-                </div>
-
-                <div class="comparison-box animate-fade-in delay-1">
-                    <div class="comparison-column">
-                        <h4>🔄 Fetch vs XMLHttpRequest</h4>
-                        <ul class="feature-list">
-                            <li>✅ Sintaxis más limpia y moderna</li>
-                            <li>✅ Basado en Promesas (Promise)</li>
-                            <li>✅ Mejor manejo de errores</li>
-                            <li>✅ Soporte nativo para JSON</li>
-                        </ul>
+                <div class="fetch-flow animate-fade-in">
+                    <div class="flow-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>fetch(url)</h4>
+                            <p>Inicia petición</p>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>.then()</h4>
+                            <p>Procesa respuesta</p>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>.json()</h4>
+                            <p>Convierte datos</p>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>.catch()</h4>
+                            <p>Maneja errores</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="code-section animate-slide-up delay-2">
-                    <h3>📡 Sintaxis Básica</h3>
+                <div class="code-section animate-slide-up delay-1">
+                    <h3>📡 Sintaxis con Promesas</h3>
                     <div class="code-block-container">
                         <div class="code-header">
-                            <span class="file-name">Estructura de fetch()</span>
+                            <span class="file-name">Patrón básico de fetch</span>
                         </div>
                         <div class="code-block">
-                            <pre><code class="language-js"><span class="comment">// Fetch devuelve una Promesa</span>
-<span class="function">fetch</span>(<span class="string">"https://api.ejemplo.com/datos"</span>)
+                            <pre><code class="language-js"><span class="function">fetch</span>(<span class="string">"https://api.exchangerate-api.com/v4/latest/USD"</span>)
     .<span class="method">then</span>(<span class="keyword">function</span>(respuesta) {
-        <span class="comment">// Convertir respuesta a JSON</span>
         <span class="keyword">return</span> respuesta.<span class="method">json</span>();
     })
     .<span class="method">then</span>(<span class="keyword">function</span>(datos) {
-        <span class="comment">// Usar los datos</span>
-        console.<span class="method">log</span>(datos);
+        <span class="keyword">const</span> tasaCOP = datos.rates.COP;
+        document.<span class="method">getElementById</span>(<span class="string">"tasa-dolar"</span>).textContent = tasaCOP;
     })
     .<span class="method">catch</span>(<span class="keyword">function</span>(error) {
-        <span class="comment">// Manejar errores</span>
-        console.<span class="method">error</span>(<span class="string">"Error:"</span>, error);
+        console.<span class="method">error</span>(error);
     });</code></pre>
                         </div>
                     </div>
                 </div>
 
-                <div class="key-concept animate-fade-in delay-2">
-                    <div class="key-icon">⚡</div>
-                    <div class="key-content">
-                        <h4>¿Qué es una Promesa (Promise)?</h4>
-                        <p>
-                            Una <strong>Promise</strong> representa una operación asíncrona. 
-                            Como las peticiones HTTP toman tiempo, JavaScript no espera - continúa 
-                            ejecutando código y cuando la respuesta llega, ejecuta el <code>.then()</code>.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="code-section animate-slide-up delay-3">
-                    <h3>💱 Ejemplo Real: Tasa de Cambio USD</h3>
-                    <div class="code-block-container">
-                        <div class="code-header">
-                            <span class="file-name">js/fetch.js - Obtener tasa de dólar</span>
+                <div class="http-methods animate-fade-in delay-2">
+                    <h3>📬 Métodos HTTP</h3>
+                    <div class="methods-grid">
+                        <div class="method-card get">
+                            <span class="method-name">GET</span>
+                            <span class="method-desc">Obtener datos</span>
                         </div>
-                        <div class="code-block">
-                            <pre><code class="language-js"><span class="comment">// URL de la API de tasas de cambio</span>
-<span class="keyword">const</span> API_URL = <span class="string">"https://api.exchangerate-api.com/v4/latest/USD"</span>;
-
-<span class="comment">// Función para obtener la tasa de cambio</span>
-<span class="keyword">function</span> <span class="function">obtenerTasaDolar</span>() {
-    <span class="function">fetch</span>(API_URL)
-        .<span class="method">then</span>(<span class="keyword">function</span>(respuesta) {
-            <span class="comment">// Verificar si la respuesta fue exitosa</span>
-            <span class="keyword">if</span> (!respuesta.ok) {
-                <span class="keyword">throw new</span> <span class="function">Error</span>(<span class="string">"Error en la petición"</span>);
-            }
-            <span class="keyword">return</span> respuesta.<span class="method">json</span>();
-        })
-        .<span class="method">then</span>(<span class="keyword">function</span>(datos) {
-            <span class="comment">// Extraer tasa COP (Peso Colombiano)</span>
-            <span class="keyword">const</span> tasaCOP = datos.rates.COP;
-            
-            <span class="comment">// Mostrar en el footer</span>
-            <span class="keyword">const</span> elemento = document.<span class="method">getElementById</span>(<span class="string">"tasa-dolar-footer"</span>);
-            elemento.textContent = <span class="string">`1 USD = ${tasaCOP} COP`</span>;
-        })
-        .<span class="method">catch</span>(<span class="keyword">function</span>(error) {
-            console.<span class="method">error</span>(<span class="string">"Error al obtener tasa:"</span>, error);
-        });
-}</code></pre>
+                        <div class="method-card post">
+                            <span class="method-name">POST</span>
+                            <span class="method-desc">Enviar datos</span>
+                        </div>
+                        <div class="method-card put">
+                            <span class="method-name">PUT</span>
+                            <span class="method-desc">Actualizar</span>
+                        </div>
+                        <div class="method-card delete">
+                            <span class="method-name">DELETE</span>
+                            <span class="method-desc">Eliminar</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="info-cards animate-fade-in delay-3">
-                    <div class="info-card highlight">
-                        <h4>📥 Métodos HTTP Comunes</h4>
-                        <div class="info-details">
-                            <p><code>GET</code> - Obtener datos (por defecto)</p>
-                            <p><code>POST</code> - Enviar datos nuevos</p>
-                            <p><code>PUT</code> - Actualizar datos</p>
-                            <p><code>DELETE</code> - Eliminar datos</p>
-                        </div>
-                    </div>
-                    <div class="info-card">
-                        <h4>📤 Enviando Datos (POST)</h4>
-                        <div class="info-details">
-                            <pre><code class="language-js"><span class="function">fetch</span>(url, {
-  method: <span class="string">"POST"</span>,
-  headers: {
-    <span class="string">"Content-Type"</span>: <span class="string">"application/json"</span>
-  },
-  body: JSON.<span class="method">stringify</span>(datos)
-});</code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="code-section animate-slide-up delay-4">
-                    <h3>🚀 Sintaxis Moderna: Async/Await</h3>
-                    <div class="code-block-container">
-                        <div class="code-header">
-                            <span class="file-name">Versión con async/await</span>
-                        </div>
-                        <div class="code-block">
-                            <pre><code class="language-js"><span class="comment">// async/await hace el código más legible</span>
-<span class="keyword">async function</span> <span class="function">obtenerTasaDolar</span>() {
-    <span class="keyword">try</span> {
-        <span class="comment">// await "espera" a que la promesa se resuelva</span>
-        <span class="keyword">const</span> respuesta = <span class="keyword">await</span> <span class="function">fetch</span>(API_URL);
-        <span class="keyword">const</span> datos = <span class="keyword">await</span> respuesta.<span class="method">json</span>();
-        
-        <span class="keyword">const</span> tasaCOP = datos.rates.COP;
-        document.<span class="method">getElementById</span>(<span class="string">"tasa-dolar-footer"</span>).textContent = 
-            <span class="string">`1 USD = ${tasaCOP} COP`</span>;
-    } <span class="keyword">catch</span> (error) {
-        console.<span class="method">error</span>(<span class="string">"Error:"</span>, error);
-    }
-}</code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="key-concept animate-fade-in delay-4">
-                    <div class="key-icon">⚠️</div>
-                    <div class="key-content">
-                        <h4>CORS: Cross-Origin Resource Sharing</h4>
-                        <p>
-                            Por seguridad, los navegadores bloquean peticiones a otros dominios por defecto.
-                            Las APIs deben permitir el acceso incluyendo headers CORS. Si ves errores de CORS,
-                            la API no permite peticiones desde tu origen.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="final-summary animate-fade-in delay-4">
+                <div class="final-summary animate-fade-in delay-3">
                     <h3>🎉 ¡Recorrido Completado!</h3>
                     <div class="summary-flow">
                         <div class="summary-item">📄 index.html</div>
@@ -1443,15 +1266,14 @@ tbody.<span class="method">appendChild</span>(fila);</code></pre>
                         <span class="summary-arrow">→</span>
                         <div class="summary-item">👤 usuarios.js</div>
                         <span class="summary-arrow">→</span>
-                        <div class="summary-item">💰 transacciones.js</div>
+                        <div class="summary-item">💰 trans.js</div>
                         <span class="summary-arrow">→</span>
                         <div class="summary-item">🖥️ ui.js</div>
                         <span class="summary-arrow">→</span>
                         <div class="summary-item">🚀 app.js</div>
                         <span class="summary-arrow">→</span>
-                        <div class="summary-item">🌐 fetch.js</div>
+                        <div class="summary-item">🌐 fetch</div>
                     </div>
-                    <p>Todos estos módulos trabajan juntos para crear una aplicación funcional de gestión financiera con datos en tiempo real.</p>
                 </div>
 
                 <div class="nav-buttons">

@@ -1247,6 +1247,325 @@ code {
 }
 
 /* ========================================
+   INDEX.HTML SECTION - VISUAL STRUCTURE
+   ======================================== */
+
+.visual-structure {
+    margin: 3rem 0;
+}
+
+.structure-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.diagram-box {
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    min-width: 280px;
+    transition: all var(--transition-medium);
+}
+
+.diagram-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0, 179, 126, 0.15);
+}
+
+.login-box {
+    border-color: #E44D26;
+}
+
+.login-box:hover {
+    box-shadow: 0 10px 40px rgba(228, 77, 38, 0.2);
+}
+
+.dashboard-box {
+    border-color: var(--green-primary);
+}
+
+.box-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.box-icon {
+    font-size: 1.5rem;
+}
+
+.box-header h4 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-family: 'Fira Code', monospace;
+}
+
+.box-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.mini-element {
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-darker);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-family: 'Fira Code', monospace;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.mini-element:hover {
+    background: var(--bg-card-hover);
+    color: var(--green-primary);
+}
+
+.diagram-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+}
+
+.diagram-arrow span {
+    font-size: 0.75rem;
+    text-align: center;
+    max-width: 120px;
+}
+
+.diagram-arrow svg {
+    width: 32px;
+    height: 32px;
+    stroke: var(--green-primary);
+    animation: pulse-arrow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-arrow {
+    0%, 100% { transform: translateX(0); opacity: 1; }
+    50% { transform: translateX(5px); opacity: 0.6; }
+}
+
+.ids-grid {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.ids-grid h3 {
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.id-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.id-tag {
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    cursor: default;
+}
+
+.id-tag:hover {
+    transform: scale(1.1);
+}
+
+.id-tag.green { background: rgba(0, 179, 126, 0.2); color: var(--green-primary); border: 1px solid var(--green-primary); }
+.id-tag.red { background: rgba(247, 90, 104, 0.2); color: var(--red-primary); border: 1px solid var(--red-primary); }
+.id-tag.blue { background: rgba(88, 166, 255, 0.2); color: var(--blue-primary); border: 1px solid var(--blue-primary); }
+.id-tag.purple { background: rgba(167, 139, 250, 0.2); color: var(--purple-primary); border: 1px solid var(--purple-primary); }
+.id-tag.orange { background: rgba(249, 115, 22, 0.2); color: var(--orange-primary); border: 1px solid var(--orange-primary); }
+
+/* ========================================
+   FETCH SECTION - FLOW & METHODS
+   ======================================== */
+
+.fetch-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+}
+
+.flow-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    transition: all var(--transition-medium);
+}
+
+.flow-step:hover {
+    transform: translateY(-5px);
+    border-color: var(--green-primary);
+    box-shadow: 0 10px 30px var(--green-glow);
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.step-content h4 {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.step-content p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.flow-arrow {
+    font-size: 1.5rem;
+    color: var(--green-primary);
+    animation: pulse-flow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-flow {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+.http-methods {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.http-methods h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.methods-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.method-card {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+    transition: all var(--transition-medium);
+}
+
+.method-card:hover {
+    transform: translateY(-5px);
+}
+
+.method-card.get {
+    background: rgba(0, 179, 126, 0.15);
+    border: 1px solid var(--green-primary);
+}
+
+.method-card.post {
+    background: rgba(88, 166, 255, 0.15);
+    border: 1px solid var(--blue-primary);
+}
+
+.method-card.put {
+    background: rgba(252, 211, 77, 0.15);
+    border: 1px solid var(--yellow-primary);
+}
+
+.method-card.delete {
+    background: rgba(247, 90, 104, 0.15);
+    border: 1px solid var(--red-primary);
+}
+
+.method-name {
+    display: block;
+    font-family: 'Fira Code', monospace;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.method-card.get .method-name { color: var(--green-primary); }
+.method-card.post .method-name { color: var(--blue-primary); }
+.method-card.put .method-name { color: var(--yellow-primary); }
+.method-card.delete .method-name { color: var(--red-primary); }
+
+.method-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* ========================================
+   IMPROVED SPACING & DYNAMISM
+   ======================================== */
+
+.section-content > * + * {
+    margin-top: 2.5rem;
+}
+
+.code-section {
+    margin: 3rem 0;
+}
+
+.key-concept {
+    margin: 3rem 0;
+}
+
+.content-card {
+    margin: 2.5rem 0;
+}
+
+.info-cards {
+    margin: 3rem 0;
+    gap: 2rem;
+}
+
+.final-summary {
+    margin-top: 4rem;
+    padding: 2.5rem;
+}
+
+.nav-buttons {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* ========================================
    RESPONSIVE
    ======================================== */
 
@@ -1269,6 +1588,27 @@ code {
     
     .crud-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .methods-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .structure-diagram {
+        flex-direction: column;
+    }
+    
+    .diagram-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .diagram-arrow svg {
+        animation: pulse-arrow-vertical 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-arrow-vertical {
+        0%, 100% { transform: translateY(0) rotate(-90deg); opacity: 1; }
+        50% { transform: translateY(5px) rotate(-90deg); opacity: 0.6; }
     }
 }
 
@@ -1324,5 +1664,27 @@ code {
     
     .summary-arrow {
         transform: rotate(90deg);
+    }
+    
+    .fetch-flow {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .methods-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .id-tags {
+        gap: 0.75rem;
+    }
+    
+    .id-tag {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
     }
 }
