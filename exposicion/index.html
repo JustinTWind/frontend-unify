@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exposición - Unify Gestor Financiero</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ========================================
+         NAVEGACIÓN LATERAL
+         ======================================== -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-mini">
+                <svg viewBox="0 0 40 40" width="32" height="32">
+                    <circle cx="20" cy="20" r="18" fill="none" stroke="#00B37E" stroke-width="2"/>
+                    <path d="M20 10V30M14 14H26M14 26H26" stroke="#00B37E" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <span>Unify</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#intro" class="nav-link active" data-section="intro">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 16v-4M12 8h.01"/>
+                </svg>
+                Introducción
+            </a></li>
+            <li><a href="#arquitectura" class="nav-link" data-section="arquitectura">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                Arquitectura
+            </a></li>
+            <li><a href="#storage" class="nav-link" data-section="storage">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 7v10c0 2 2 4 8 4s8-2 8-4V7"/>
+                    <ellipse cx="12" cy="7" rx="8" ry="4"/>
+                    <path d="M4 12c0 2 2 4 8 4s8-2 8-4"/>
+                </svg>
+                storage.js
+            </a></li>
+            <li><a href="#usuarios" class="nav-link" data-section="usuarios">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+                usuarios.js
+            </a></li>
+            <li><a href="#transacciones" class="nav-link" data-section="transacciones">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+                transacciones.js
+            </a></li>
+            <li><a href="#ui" class="nav-link" data-section="ui">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <path d="M3 9h18M9 21V9"/>
+                </svg>
+                ui.js
+            </a></li>
+            <li><a href="#app" class="nav-link" data-section="app">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                    <polyline points="2 17 12 22 22 17"/>
+                    <polyline points="2 12 12 17 22 12"/>
+                </svg>
+                app.js
+            </a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="progress-container">
+                <span>Progreso</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span class="progress-text" id="progress-text">0%</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========================================
+         CONTENIDO PRINCIPAL
+         ======================================== -->
+    <main class="main-content">
+
+        <!-- SECCIÓN: INTRODUCCIÓN -->
+        <section id="intro" class="section active">
+            <div class="section-content">
+                <div class="hero">
+                    <div class="hero-badge animate-fade-in">
+                        <span>💰 Proyecto Integrador Frontend</span>
+                    </div>
+                    <h1 class="hero-title animate-slide-up">
+                        <span class="gradient-text">Unify</span>
+                        <br>Gestor Financiero Personal
+                    </h1>
+                    <p class="hero-description animate-slide-up delay-1">
+                        Una aplicación web moderna para gestionar tus finanzas personales, 
+                        construida con <strong>HTML5</strong>, <strong>CSS3</strong> y <strong>JavaScript Vanilla</strong>.
+                    </p>
+                    <div class="tech-stack animate-slide-up delay-2">
+                        <div class="tech-item">
+                            <div class="tech-icon html">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/>
+                                </svg>
+                            </div>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon css">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/>
+                                </svg>
+                            </div>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon js">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.405-.6-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/>
+                                </svg>
+                            </div>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="features-grid animate-fade-in delay-3">
+                    <div class="feature-card">
+                        <div class="feature-icon green">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <h3>Sistema de Login</h3>
+                        <p>Registro e inicio de sesión con validación de datos</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                        </div>
+                        <h3>Gestión de Transacciones</h3>
+                        <p>Agregar, eliminar y buscar ingresos y gastos</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon purple">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 7v10c0 2 2 4 8 4s8-2 8-4V7"/>
+                                <ellipse cx="12" cy="7" rx="8" ry="4"/>
+                            </svg>
+                        </div>
+                        <h3>localStorage & sessionStorage</h3>
+                        <p>Persistencia de datos en el navegador</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon orange">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M3 9h18M9 21V9"/>
+                            </svg>
+                        </div>
+                        <h3>Interfaz Dinámica</h3>
+                        <p>Actualización en tiempo real del DOM</p>
+                    </div>
+                </div>
+
+                <div class="cta-section animate-fade-in delay-4">
+                    <button class="btn-primary" onclick="navegarSeccion('arquitectura')">
+                        Comenzar Recorrido
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: ARQUITECTURA -->
+        <section id="arquitectura" class="section">
+            <div class="section-content">
+                <div class="section-header">
+                    <span class="section-badge">📂 Estructura</span>
+                    <h2>Arquitectura del Proyecto</h2>
+                    <p>Cómo se organizan e interconectan los archivos JavaScript</p>
+                </div>
+
+                <div class="architecture-container">
+                    <div class="file-tree animate-slide-left">
+                        <h3>📁 Estructura de Archivos</h3>
+                        <div class="tree">
+                            <div class="tree-item folder">
+                                <span class="folder-icon">📁</span>
+                                <span>Proyecto-Integrador-FrontEnd/</span>
+                            </div>
+                            <div class="tree-item file indent-1">
+                                <span class="file-icon html">📄</span>
+                                <span>index.html</span>
+                                <span class="file-desc">Estructura HTML</span>
+                            </div>
+                            <div class="tree-item file indent-1">
+                                <span class="file-icon css">🎨</span>
+                                <span>style.css</span>
+                                <span class="file-desc">Estilos CSS</span>
+                            </div>
+                            <div class="tree-item folder indent-1">
+                                <span class="folder-icon">📁</span>
+                                <span>js/</span>
+                            </div>
+                            <div class="tree-item file indent-2 highlight" data-module="storage">
+                                <span class="file-icon js">⚡</span>
+                                <span>storage.js</span>
+                                <span class="file-desc">Almacenamiento</span>
+                            </div>
+                            <div class="tree-item file indent-2 highlight" data-module="usuarios">
+                                <span class="file-icon js">⚡</span>
+                                <span>usuarios.js</span>
+                                <span class="file-desc">Autenticación</span>
+                            </div>
+                            <div class="tree-item file indent-2 highlight" data-module="transacciones">
+                                <span class="file-icon js">⚡</span>
+                                <span>transacciones.js</span>
+                                <span class="file-desc">CRUD</span>
+                            </div>
+                            <div class="tree-item file indent-2 highlight" data-module="ui">
+                                <span class="file-icon js">⚡</span>
+                                <span>ui.js</span>
+                                <span class="file-desc">Interfaz</span>
+                            </div>
+                            <div class="tree-item file indent-2 highlight" data-module="app">
+                                <span class="file-icon js">⚡</span>
+                                <span>app.js</span>
+                                <span class="file-desc">Principal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="connection-diagram animate-slide-right">
+                        <h3>🔗 Diagrama de Conexiones</h3>
+                        <div class="diagram">
+                            <div class="diagram-layer layer-1">
+                                <div class="module-box storage" id="mod-storage">
+                                    <div class="module-icon">💾</div>
+                                    <span>storage.js</span>
+                                    <small>Base de datos</small>
+                                </div>
+                            </div>
+                            <div class="connection-lines">
+                                <svg class="lines-svg" viewBox="0 0 400 60">
+                                    <path class="connection-path" d="M200 0 L100 60" />
+                                    <path class="connection-path" d="M200 0 L300 60" />
+                                </svg>
+                            </div>
+                            <div class="diagram-layer layer-2">
+                                <div class="module-box usuarios" id="mod-usuarios">
+                                    <div class="module-icon">👤</div>
+                                    <span>usuarios.js</span>
+                                    <small>Login/Registro</small>
+                                </div>
+                                <div class="module-box transacciones" id="mod-transacciones">
+                                    <div class="module-icon">💰</div>
+                                    <span>transacciones.js</span>
+                                    <small>CRUD datos</small>
+                                </div>
+                            </div>
+                            <div class="connection-lines">
+                                <svg class="lines-svg" viewBox="0 0 400 60">
+                                    <path class="connection-path" d="M100 0 L200 60" />
+                                    <path class="connection-path" d="M300 0 L200 60" />
+                                </svg>
+                            </div>
+                            <div class="diagram-layer layer-3">
+                                <div class="module-box ui" id="mod-ui">
+                                    <div class="module-icon">🖥️</div>
+                                    <span>ui.js</span>
+                                    <small>Actualiza DOM</small>
+                                </div>
+                            </div>
+                            <div class="connection-lines">
+                                <svg class="lines-svg" viewBox="0 0 400 60">
+                                    <path class="connection-path" d="M200 0 L200 60" />
+                                </svg>
+                            </div>
+                            <div class="diagram-layer layer-4">
+                                <div class="module-box app" id="mod-app">
+                                    <div class="module-icon">🚀</div>
+                                    <span>app.js</span>
+                                    <small>Punto de entrada</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-cards">
+                    <div class="info-card animate-fade-in">
+                        <div class="info-icon">📥</div>
+                        <h4>Orden de Carga</h4>
+                        <p>Los scripts se cargan en orden específico porque cada módulo depende del anterior:</p>
+                        <ol class="load-order">
+                            <li><code>storage.js</code> - Primero (sin dependencias)</li>
+                            <li><code>usuarios.js</code> - Usa storage.js</li>
+                            <li><code>transacciones.js</code> - Usa storage.js y usuarios.js</li>
+                            <li><code>ui.js</code> - Usa transacciones.js</li>
+                            <li><code>app.js</code> - Usa todos los anteriores</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn-secondary" onclick="navegarSeccion('intro')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Anterior
+                    </button>
+                    <button class="btn-primary" onclick="navegarSeccion('storage')">
+                        Siguiente: storage.js
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: STORAGE.JS -->
+        <section id="storage" class="section">
+            <div class="section-content">
+                <div class="section-header">
+                    <span class="section-badge storage-badge">💾 Módulo 1</span>
+                    <h2>storage.js</h2>
+                    <p>Módulo de Almacenamiento - La base de datos del navegador</p>
+                </div>
+
+                <div class="module-explanation">
+                    <div class="concept-card animate-slide-up">
+                        <h3>🤔 ¿Qué hace este módulo?</h3>
+                        <p>
+                            Este módulo encapsula todas las operaciones con <strong>localStorage</strong> y 
+                            <strong>sessionStorage</strong>. Es como un "intermediario" entre nuestra aplicación 
+                            y el almacenamiento del navegador.
+                        </p>
+                    </div>
+
+                    <div class="storage-comparison animate-fade-in delay-1">
+                        <h3>📊 localStorage vs sessionStorage</h3>
+                        <div class="comparison-grid">
+                            <div class="comparison-item local">
+                                <div class="comparison-header">
+                                    <span class="comparison-icon">💿</span>
+                                    <h4>localStorage</h4>
+                                </div>
+                                <ul>
+                                    <li>✅ Persiste al cerrar el navegador</li>
+                                    <li>✅ Sin fecha de expiración</li>
+                                    <li>✅ Capacidad ~5-10 MB</li>
+                                    <li>📦 Usado para: usuarios y transacciones</li>
+                                </ul>
+                            </div>
+                            <div class="comparison-item session">
+                                <div class="comparison-header">
+                                    <span class="comparison-icon">⏱️</span>
+                                    <h4>sessionStorage</h4>
+                                </div>
+                                <ul>
+                                    <li>❌ Se borra al cerrar el navegador</li>
+                                    <li>⏰ Expira con la sesión</li>
+                                    <li>✅ Capacidad ~5-10 MB</li>
+                                    <li>🔐 Usado para: sesión del usuario</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-section animate-slide-up delay-2">
+                        <h3>📝 Funciones del Módulo</h3>
+                        
+                        <div class="function-card">
+                            <div class="function-header">
+                                <span class="function-name">guardarEnLocalStorage(clave, datos)</span>
+                                <span class="function-tag">localStorage</span>
+                            </div>
+                            <div class="function-body">
+                                <p>Guarda datos en localStorage. Convierte objetos a JSON.</p>
+                                <pre><code class="language-js"><span class="keyword">function</span> <span class="function">guardarEnLocalStorage</span>(clave, datos) {
+    <span class="keyword">const</span> datosTexto = <span class="object">JSON</span>.<span class="method">stringify</span>(datos);
+    localStorage.<span class="method">setItem</span>(clave, datosTexto);
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="function-card">
+                            <div class="function-header">
+                                <span class="function-name">obtenerDeLocalStorage(clave)</span>
+                                <span class="function-tag">localStorage</span>
+                            </div>
+                            <div class="function-body">
+                                <p>Obtiene datos de localStorage. Convierte JSON a objeto.</p>
+                                <pre><code class="language-js"><span class="keyword">function</span> <span class="function">obtenerDeLocalStorage</span>(clave) {
+    <span class="keyword">const</span> datosTexto = localStorage.<span class="method">getItem</span>(clave);
+    <span class="keyword">if</span> (datosTexto === <span class="null">null</span>) <span class="keyword">return</span> <span class="null">null</span>;
+    <span class="keyword">return</span> <span class="object">JSON</span>.<span class="method">parse</span>(datosTexto);
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="function-card">
+                            <div class="function-header">
+                                <span class="function-name">guardarSesion(usuario)</span>
+                                <span class="function-tag session">sessionStorage</span>
+                            </div>
+                            <div class="function-body">
+                                <p>Guarda la sesión del usuario actual en sessionStorage.</p>
+                                <pre><code class="language-js"><span class="keyword">function</span> <span class="function">guardarSesion</span>(usuario) {
+    <span class="keyword">const</span> usuarioTexto = <span class="object">JSON</span>.<span class="method">stringify</span>(usuario);
+    sessionStorage.<span class="method">setItem</span>(<span class="string">"sesionActual"</span>, usuarioTexto);
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="function-card">
+                            <div class="function-header">
+                                <span class="function-name">haySesionActiva()</span>
+                                <span class="function-tag session">sessionStorage</span>
+                            </div>
+                            <div class="function-body">
+                                <p>Verifica si hay un usuario logueado actualmente.</p>
+                                <pre><code class="language-js"><span class="keyword">function</span> <span class="function">haySesionActiva</span>() {
+    <span class="keyword">const</span> sesion = <span class="function">obtenerSesion</span>();
+    <span class="keyword">return</span> sesion !== <span class="null">null</span>;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="key-concept animate-fade-in delay-3">
+                        <div class="key-icon">💡</div>
+                        <div class="key-content">
+                            <h4>Concepto Clave: JSON</h4>
+                            <p>
+                                localStorage solo puede guardar <strong>strings</strong>. Por eso usamos 
+                                <code>JSON.stringify()</code> para convertir objetos a texto, y 
+                                <code>JSON.parse()</code> para convertirlos de vuelta a objetos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn-secondary" onclick="navegarSeccion('arquitectura')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Anterior
+                    </button>
+                    <button class="btn-primary" onclick="navegarSeccion('usuarios')">
+                        Siguiente: usuarios.js
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: USUARIOS.JS -->
+        <section id="usuarios" class="section">
+            <div class="section-content">
+                <div class="section-header">
+                    <span class="section-badge usuarios-badge">👤 Módulo 2</span>
+                    <h2>usuarios.js</h2>
+                    <p>Módulo de Usuarios - Autenticación y registro</p>
+                </div>
+
+                <div class="module-explanation">
+                    <div class="concept-card animate-slide-up">
+                        <h3>🤔 ¿Qué hace este módulo?</h3>
+                        <p>
+                            Maneja todo lo relacionado con los usuarios: <strong>registro</strong>, 
+                            <strong>inicio de sesión</strong> y <strong>obtención del usuario actual</strong>. 
+                            Usa las funciones de <code>storage.js</code> para guardar y obtener datos.
+                        </p>
+                    </div>
+
+                    <div class="dependency-box animate-fade-in delay-1">
+                        <h4>🔗 Dependencias</h4>
+                        <div class="dependency-flow">
+                            <div class="dep-item">usuarios.js</div>
+                            <svg class="dep-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                            <div class="dep-item dep-storage">storage.js</div>
+                        </div>
+                        <p>Este módulo usa <code>guardarEnLocalStorage()</code>, <code>obtenerDeLocalStorage()</code> y <code>guardarSesion()</code></p>
+                    </div>
+
+                    <div class="user-structure animate-slide-up delay-2">
+                        <h3>📦 Estructura de un Usuario</h3>
+                        <pre><code class="language-js">{
+    <span class="property">id</span>: <span class="number">1706284800000</span>,        <span class="comment">// Timestamp único</span>
+    <span class="property">nombre</span>: <span class="string">"Mariana"</span>,
+    <span class="property">email</span>: <span class="string">"mariana@ejemplo.com"</span>,
+    <span class="property">contrasena</span>: <span class="string">"1234"</span>,         <span class="comment">// ⚠️ En producción: encriptar</span>
+    <span class="property">fechaRegistro</span>: <span class="string">"26/1/2026"</span>
+}</code></pre>
+                    </div>
+
+                    <div class="code-section animate-slide-up delay-2">
+                        <h3>📝 Funciones del Módulo</h3>
+                        
+                        <div class="function-card">
+                            <div class="function-header">
+                                <span class="function-name">registrarUsuario(nombre, email, contrasena)</span>
+                                <span class="function-tag create">Crear</span>
+                            </div>
+                            <div class="function-body">
+                                <p>Registra un nuevo usuario después de validar que el email no exista.</p>
+                                <div class="flow-steps">
+                                    <div class="flow-step">
+                                        <span class="step-number">1</span>
+                                        <span>Obtener usuarios existentes</span>
+                                    </div>
+                                    <div class="flow-step">
+                                        <span class="step-number">2</span>
+                                        <span>Verificar email no duplicado</span>
+                                    </div>
+                                    <div class="flow-step">
+                                        <span class="step-number">3</span>
+                                        <span>Crear objeto usuario</span>
+                                    </div>
+                                    <div class="flow-step">
+                                        <span class="step-number">4</span>
+                                        <span>Guardar en localStorage</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="function-card">
+                            <div class="function-header">
+                                <span class="function-name">iniciarSesion(email, contrasena)</span>
+                                <span class="function-tag auth">Auth</span>
+                            </div>
+                            <div class="function-body">
+                                <p>Valida credenciales y crea una sesión para el usuario.</p>
+                                <div class="flow-steps">
+                                    <div class="flow-step">
+                                        <span class="step-number">1</span>
+                                        <span>Buscar usuario por email</span>
+                                    </div>
+                                    <div class="flow-step">
+                                        <span class="step-number">2</span>
+                                        <span>Comparar contraseña</span>
+                                    </div>
+                                    <div class="flow-step">
+                                        <span class="step-number">3</span>
+                                        <span>Guardar sesión (sessionStorage)</span>
+                                    </div>
+                                    <div class="flow-step">
+                                        <span class="step-number">4</span>
+                                        <span>Retornar true/false</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="function-card">
+                            <div class="function-header">
+                                <span class="function-name">obtenerUsuarioActual()</span>
+                                <span class="function-tag read">Leer</span>
+                            </div>
+                            <div class="function-body">
+                                <p>Retorna el usuario que está logueado actualmente.</p>
+                                <pre><code class="language-js"><span class="keyword">function</span> <span class="function">obtenerUsuarioActual</span>() {
+    <span class="keyword">const</span> sesion = <span class="function">obtenerSesion</span>();
+    <span class="keyword">return</span> sesion;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="key-concept animate-fade-in delay-3">
+                        <div class="key-icon">🔒</div>
+                        <div class="key-content">
+                            <h4>Seguridad: Por qué sessionStorage para la sesión</h4>
+                            <p>
+                                Usamos <strong>sessionStorage</strong> para la sesión del usuario porque 
+                                queremos que se cierre automáticamente al cerrar el navegador. Esto es más 
+                                seguro que mantener la sesión indefinidamente en localStorage.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn-secondary" onclick="navegarSeccion('storage')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Anterior
+                    </button>
+                    <button class="btn-primary" onclick="navegarSeccion('transacciones')">
+                        Siguiente: transacciones.js
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: TRANSACCIONES.JS -->
+        <section id="transacciones" class="section">
+            <div class="section-content">
+                <div class="section-header">
+                    <span class="section-badge transacciones-badge">💰 Módulo 3</span>
+                    <h2>transacciones.js</h2>
+                    <p>Módulo de Transacciones - CRUD de ingresos y gastos</p>
+                </div>
+
+                <div class="module-explanation">
+                    <div class="concept-card animate-slide-up">
+                        <h3>🤔 ¿Qué hace este módulo?</h3>
+                        <p>
+                            Es el corazón de la aplicación. Maneja todas las operaciones 
+                            <strong>CRUD</strong> (Crear, Leer, Actualizar, Eliminar) de las transacciones 
+                            financieras. También calcula los totales.
+                        </p>
+                    </div>
+
+                    <div class="crud-grid animate-fade-in delay-1">
+                        <div class="crud-item create">
+                            <span class="crud-letter">C</span>
+                            <span class="crud-word">Create</span>
+                            <span class="crud-func">agregarTransaccion()</span>
+                        </div>
+                        <div class="crud-item read">
+                            <span class="crud-letter">R</span>
+                            <span class="crud-word">Read</span>
+                            <span class="crud-func">obtenerTransacciones()</span>
+                        </div>
+                        <div class="crud-item update">
+                            <span class="crud-letter">U</span>
+                            <span class="crud-word">Update</span>
+                            <span class="crud-func">-</span>
+                        </div>
+                        <div class="crud-item delete">
+                            <span class="crud-letter">D</span>
+                            <span class="crud-word">Delete</span>
+                            <span class="crud-func">eliminarTransaccion()</span>
+                        </div>
+                    </div>
+
+                    <div class="transaction-structure animate-slide-up delay-2">
+                        <h3>📦 Estructura de una Transacción</h3>
+                        <pre><code class="language-js">{
+    <span class="property">id</span>: <span class="number">1706284900000</span>,
+    <span class="property">descripcion</span>: <span class="string">"Salario mensual"</span>,
+    <span class="property">valor</span>: <span class="number">3500000</span>,
+    <span class="property">categoria</span>: <span class="string">"Trabajo"</span>,
+    <span class="property">tipo</span>: <span class="string">"entrada"</span>,      <span class="comment">// "entrada" o "salida"</span>
+    <span class="property">fecha</span>: <span class="string">"26/1/2026"</span>
+}</code></pre>
+                    </div>
+
+                    <div class="code-section animate-slide-up delay-2">
+                        <h3>📝 Funciones Principales</h3>
+                        
+                        <div class="function-card">
+                            <div class="function-header">
+                                <span class="function-name">agregarTransaccion(descripcion, valor, categoria, tipo)</span>
+                                <span class="function-tag create">Crear</span>
+                            </div>
+                            <div class="function-body">
+                                <p>Crea una nueva transacción y la guarda al inicio del array.</p>
+                                <pre><code class="language-js"><span class="keyword">const</span> nuevaTransaccion = {
+    <span class="property">id</span>: <span class="object">Date</span>.<span class="method">now</span>(),
+    <span class="property">descripcion</span>: descripcion,
+    <span class="property">valor</span>: <span class="function">parseFloat</span>(valor),
+    <span class="property">categoria</span>: categoria,
+    <span class="property">tipo</span>: tipo,
+    <span class="property">fecha</span>: <span class="keyword">new</span> <span class="object">Date</span>().<span class="method">toLocaleDateString</span>()
+};
+transacciones.<span class="method">unshift</span>(nuevaTransaccion); <span class="comment">// Al inicio</span></code></pre>
+                            </div>
+                        </div>
+
+                        <div class="function-card">
+                            <div class="function-header">
+                                <span class="function-name">buscarTransacciones(termino)</span>
+                                <span class="function-tag search">Buscar</span>
+                            </div>
+                            <div class="function-body">
+                                <p>Filtra transacciones por descripción o categoría.</p>
+                                <pre><code class="language-js"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i < transacciones.length; i++) {
+    <span class="keyword">const</span> descripcion = transacciones[i].descripcion.<span class="method">toLowerCase</span>();
+    <span class="keyword">if</span> (descripcion.<span class="method">indexOf</span>(termino) !== -<span class="number">1</span>) {
+        resultados.<span class="method">push</span>(transacciones[i]);
+    }
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="function-card">
+                            <div class="function-header">
+                                <span class="function-name">calcularEntradas() / calcularSalidas() / calcularBalance()</span>
+                                <span class="function-tag calc">Calcular</span>
+                            </div>
+                            <div class="function-body">
+                                <p>Calculan los totales sumando las transacciones según su tipo.</p>
+                                <pre><code class="language-js"><span class="keyword">function</span> <span class="function">calcularBalance</span>() {
+    <span class="keyword">const</span> entradas = <span class="function">calcularEntradas</span>();
+    <span class="keyword">const</span> salidas = <span class="function">calcularSalidas</span>();
+    <span class="keyword">return</span> entradas - salidas;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="key-concept animate-fade-in delay-3">
+                        <div class="key-icon">🔑</div>
+                        <div class="key-content">
+                            <h4>Clave única por usuario</h4>
+                            <p>
+                                Las transacciones se guardan con la clave <code>transacciones_{userId}</code>. 
+                                Esto permite que cada usuario tenga sus propias transacciones separadas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn-secondary" onclick="navegarSeccion('usuarios')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Anterior
+                    </button>
+                    <button class="btn-primary" onclick="navegarSeccion('ui')">
+                        Siguiente: ui.js
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: UI.JS -->
+        <section id="ui" class="section">
+            <div class="section-content">
+                <div class="section-header">
+                    <span class="section-badge ui-badge">🖥️ Módulo 4</span>
+                    <h2>ui.js</h2>
+                    <p>Módulo de Interfaz - Actualización del DOM</p>
+                </div>
+
+                <div class="module-explanation">
+                    <div class="concept-card animate-slide-up">
+                        <h3>🤔 ¿Qué hace este módulo?</h3>
+                        <p>
+                            Este módulo se encarga de <strong>actualizar la interfaz</strong> cuando los datos cambian. 
+                            Es el puente entre los datos (transacciones) y lo que el usuario ve en pantalla.
+                        </p>
+                    </div>
+
+                    <div class="dom-diagram animate-fade-in delay-1">
+                        <h3>🔄 Flujo de Actualización</h3>
+                        <div class="dom-flow">
+                            <div class="dom-step">
+                                <div class="dom-icon">📊</div>
+                                <span>Datos (Arrays)</span>
+                            </div>
+                            <svg class="dom-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                            <div class="dom-step">
+                                <div class="dom-icon">⚙️</div>
+                                <span>ui.js</span>
+                            </div>
+                            <svg class="dom-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                            <div class="dom-step">
+                                <div class="dom-icon">🖥️</div>
+                                <span>DOM (HTML)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-section animate-slide-up delay-2">
+                        <h3>📝 Funciones Principales</h3>
+                        
+                        <div class="function-card">
+                            <div class="function-header">
+                                <span class="function-name">formatearDinero(numero)</span>
+                                <span class="function-tag format">Formato</span>
+                            </div>
+                            <div class="function-body">
+                                <p>Convierte número a formato de moneda colombiana.</p>
+                                <pre><code class="language-js"><span class="keyword">function</span> <span class="function">formatearDinero</span>(numero) {
+    <span class="keyword">const</span> formato = numero.<span class="method">toLocaleString</span>(<span class="string">"es-CO"</span>, {
+        <span class="property">minimumFractionDigits</span>: <span class="number">2</span>
+    });
+    <span class="keyword">return</span> <span class="string">"COP$ "</span> + formato;
+}
+<span class="comment">// 3500000 → "COP$ 3.500.000,00"</span></code></pre>
+                            </div>
+                        </div>
+
+                        <div class="function-card">
+                            <div class="function-header">
+                                <span class="function-name">mostrarTransacciones(transacciones)</span>
+                                <span class="function-tag render">Renderizar</span>
+                            </div>
+                            <div class="function-body">
+                                <p>Genera dinámicamente las filas de la tabla de transacciones.</p>
+                                <pre><code class="language-js"><span class="keyword">const</span> fila = document.<span class="method">createElement</span>(<span class="string">"tr"</span>);
+fila.innerHTML = 
+    <span class="string">'&lt;td&gt;'</span> + transaccion.descripcion + <span class="string">'&lt;/td&gt;'</span> +
+    <span class="string">'&lt;td class="'</span> + clase + <span class="string">'"&gt;'</span> + valor + <span class="string">'&lt;/td&gt;'</span> +
+    <span class="string">'&lt;td&gt;'</span> + transaccion.categoria + <span class="string">'&lt;/td&gt;'</span>;
+tbody.<span class="method">appendChild</span>(fila);</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="function-card">
+                            <div class="function-header">
+                                <span class="function-name">actualizarTotales()</span>
+                                <span class="function-tag update">Actualizar</span>
+                            </div>
+                            <div class="function-body">
+                                <p>Actualiza las tarjetas de entradas, salidas y balance.</p>
+                                <pre><code class="language-js"><span class="keyword">function</span> <span class="function">actualizarTotales</span>() {
+    <span class="keyword">const</span> entradas = <span class="function">calcularEntradas</span>();
+    <span class="keyword">const</span> salidas = <span class="function">calcularSalidas</span>();
+    <span class="keyword">const</span> balance = <span class="function">calcularBalance</span>();
+    
+    tarjetas[<span class="number">0</span>].textContent = <span class="function">formatearDinero</span>(entradas);
+    tarjetas[<span class="number">1</span>].textContent = <span class="function">formatearDinero</span>(salidas);
+    tarjetas[<span class="number">2</span>].textContent = <span class="function">formatearDinero</span>(balance);
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="function-card">
+                            <div class="function-header">
+                                <span class="function-name">actualizarPagina()</span>
+                                <span class="function-tag main">Principal</span>
+                            </div>
+                            <div class="function-body">
+                                <p>Función maestra que actualiza toda la interfaz.</p>
+                                <pre><code class="language-js"><span class="keyword">function</span> <span class="function">actualizarPagina</span>() {
+    <span class="keyword">const</span> transacciones = <span class="function">obtenerTransacciones</span>();
+    <span class="function">mostrarTransacciones</span>(transacciones);
+    <span class="function">actualizarTotales</span>();
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="key-concept animate-fade-in delay-3">
+                        <div class="key-icon">🔄</div>
+                        <div class="key-content">
+                            <h4>Manipulación del DOM</h4>
+                            <p>
+                                Usamos métodos como <code>document.createElement()</code>, 
+                                <code>element.innerHTML</code> y <code>element.appendChild()</code> 
+                                para crear y agregar elementos HTML dinámicamente desde JavaScript.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn-secondary" onclick="navegarSeccion('transacciones')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Anterior
+                    </button>
+                    <button class="btn-primary" onclick="navegarSeccion('app')">
+                        Siguiente: app.js
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: APP.JS -->
+        <section id="app" class="section">
+            <div class="section-content">
+                <div class="section-header">
+                    <span class="section-badge app-badge">🚀 Módulo 5</span>
+                    <h2>app.js</h2>
+                    <p>Archivo Principal - Punto de entrada de la aplicación</p>
+                </div>
+
+                <div class="module-explanation">
+                    <div class="concept-card animate-slide-up">
+                        <h3>🤔 ¿Qué hace este módulo?</h3>
+                        <p>
+                            Es el <strong>director de orquesta</strong> de la aplicación. Conecta todos los 
+                            módulos anteriores y maneja los <strong>eventos del usuario</strong> (clicks, 
+                            envío de formularios, etc.).
+                        </p>
+                    </div>
+
+                    <div class="orchestration animate-fade-in delay-1">
+                        <h3>🎭 app.js como Orquestador</h3>
+                        <div class="orchestra-diagram">
+                            <div class="orchestra-center">
+                                <div class="orchestra-main">
+                                    <span>🚀</span>
+                                    <strong>app.js</strong>
+                                </div>
+                            </div>
+                            <div class="orchestra-modules">
+                                <div class="orchestra-module" style="--delay: 0">
+                                    <span>💾</span> storage.js
+                                </div>
+                                <div class="orchestra-module" style="--delay: 1">
+                                    <span>👤</span> usuarios.js
+                                </div>
+                                <div class="orchestra-module" style="--delay: 2">
+                                    <span>💰</span> transacciones.js
+                                </div>
+                                <div class="orchestra-module" style="--delay: 3">
+                                    <span>🖥️</span> ui.js
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="events-section animate-slide-up delay-2">
+                        <h3>🎯 Eventos que Maneja</h3>
+                        
+                        <div class="events-grid">
+                            <div class="event-card">
+                                <div class="event-icon">📝</div>
+                                <h4>Formulario Login</h4>
+                                <code>submit</code>
+                                <p>Valida credenciales y muestra página principal</p>
+                            </div>
+                            <div class="event-card">
+                                <div class="event-icon">✍️</div>
+                                <h4>Formulario Registro</h4>
+                                <code>submit</code>
+                                <p>Crea nuevo usuario y redirige a login</p>
+                            </div>
+                            <div class="event-card">
+                                <div class="event-icon">💵</div>
+                                <h4>Nueva Transacción</h4>
+                                <code>submit</code>
+                                <p>Agrega transacción y actualiza UI</p>
+                            </div>
+                            <div class="event-card">
+                                <div class="event-icon">🔍</div>
+                                <h4>Búsqueda</h4>
+                                <code>click / keypress</code>
+                                <p>Filtra transacciones por término</p>
+                            </div>
+                            <div class="event-card">
+                                <div class="event-icon">🚪</div>
+                                <h4>Cerrar Sesión</h4>
+                                <code>click</code>
+                                <p>Limpia sessionStorage y muestra login</p>
+                            </div>
+                            <div class="event-card">
+                                <div class="event-icon">🗑️</div>
+                                <h4>Eliminar Transacción</h4>
+                                <code>click</code>
+                                <p>Borra transacción y actualiza UI</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-section animate-slide-up delay-2">
+                        <h3>📝 Estructura Principal</h3>
+                        
+                        <div class="function-card">
+                            <div class="function-header">
+                                <span class="function-name">DOMContentLoaded</span>
+                                <span class="function-tag main">Evento Principal</span>
+                            </div>
+                            <div class="function-body">
+                                <p>Todo el código está dentro de este evento para asegurar que el HTML cargó.</p>
+                                <pre><code class="language-js">document.<span class="method">addEventListener</span>(<span class="string">"DOMContentLoaded"</span>, <span class="keyword">function</span>() {
+    <span class="comment">// Verificar sesión al cargar</span>
+    <span class="keyword">if</span> (<span class="function">haySesionActiva</span>()) {
+        <span class="function">mostrarPaginaPrincipal</span>();
+    } <span class="keyword">else</span> {
+        <span class="function">mostrarLogin</span>();
+    }
+    
+    <span class="comment">// Aquí van todos los addEventListener...</span>
+});</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="function-card">
+                            <div class="function-header">
+                                <span class="function-name">Ejemplo: Evento de Transacción</span>
+                                <span class="function-tag example">Ejemplo</span>
+                            </div>
+                            <div class="function-body">
+                                <pre><code class="language-js">formTransaccion.<span class="method">addEventListener</span>(<span class="string">"submit"</span>, <span class="keyword">function</span>(evento) {
+    evento.<span class="method">preventDefault</span>();  <span class="comment">// Evitar recarga</span>
+    
+    <span class="comment">// Obtener valores del formulario</span>
+    <span class="keyword">const</span> descripcion = document.<span class="method">getElementById</span>(<span class="string">"input-descripcion"</span>).value;
+    <span class="keyword">const</span> valor = document.<span class="method">getElementById</span>(<span class="string">"input-valor"</span>).value;
+    
+    <span class="comment">// Usar módulo de transacciones</span>
+    <span class="function">agregarTransaccion</span>(descripcion, valor, categoria, tipo);
+    
+    <span class="comment">// Usar módulo de UI</span>
+    <span class="function">actualizarPagina</span>();
+});</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="key-concept animate-fade-in delay-3">
+                        <div class="key-icon">🎓</div>
+                        <div class="key-content">
+                            <h4>Patrón de Diseño: Separación de Responsabilidades</h4>
+                            <p>
+                                Cada módulo tiene una única responsabilidad. <code>app.js</code> solo maneja eventos, 
+                                <code>ui.js</code> solo actualiza la interfaz, <code>transacciones.js</code> solo 
+                                maneja datos. Esto hace el código más mantenible y fácil de entender.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="final-summary animate-fade-in delay-4">
+                        <h3>🎉 ¡Recorrido Completado!</h3>
+                        <div class="summary-flow">
+                            <div class="summary-item">💾 storage.js</div>
+                            <span class="summary-arrow">→</span>
+                            <div class="summary-item">👤 usuarios.js</div>
+                            <span class="summary-arrow">→</span>
+                            <div class="summary-item">💰 transacciones.js</div>
+                            <span class="summary-arrow">→</span>
+                            <div class="summary-item">🖥️ ui.js</div>
+                            <span class="summary-arrow">→</span>
+                            <div class="summary-item">🚀 app.js</div>
+                        </div>
+                        <p>Estos 5 módulos trabajan juntos para crear una aplicación funcional de gestión financiera.</p>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn-secondary" onclick="navegarSeccion('ui')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Anterior
+                    </button>
+                    <button class="btn-primary" onclick="navegarSeccion('intro')">
+                        Volver al Inicio
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
