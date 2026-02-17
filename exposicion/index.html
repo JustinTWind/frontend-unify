@@ -17,10 +17,7 @@
     <nav class="sidebar">
         <div class="sidebar-header">
             <div class="logo-mini">
-                <svg viewBox="0 0 40 40" width="32" height="32">
-                    <circle cx="20" cy="20" r="18" fill="none" stroke="#00B37E" stroke-width="2"/>
-                    <path d="M20 10V30M14 14H26M14 26H26" stroke="#00B37E" stroke-width="2" stroke-linecap="round"/>
-                </svg>
+                <img src="../Logo.png" alt="Unify Logo" width="32" height="32">
             </div>
             <span>Unify</span>
         </div>
@@ -1235,7 +1232,33 @@ tbody.<span class="method">appendChild</span>(fila);</code></pre>
                     </div>
                 </div>
 
-                <div class="http-methods animate-fade-in delay-2">
+                <div class="real-example animate-slide-up delay-2">
+                    <h3>💱 Ejemplo Real: Tasa USD→COP en el Footer</h3>
+                    <div class="example-explanation">
+                        <div class="example-visual">
+                            <div class="footer-preview">
+                                <span class="footer-text">1 USD = <span class="rate-value">4,150.25</span> COP</span>
+                            </div>
+                            <p class="example-desc">El footer muestra la tasa de cambio en tiempo real desde una API externa</p>
+                        </div>
+                        <div class="code-block-container">
+                            <div class="code-header">
+                                <span class="file-name">js/fetch.js</span>
+                            </div>
+                            <div class="code-block">
+                                <pre><code class="language-js"><span class="keyword">async function</span> <span class="function">obtenerTasaDolar</span>() {
+  <span class="keyword">const</span> respuesta = <span class="keyword">await</span> <span class="function">fetch</span>(<span class="string">"https://open.er-api.com/v6/latest/USD"</span>);
+  <span class="keyword">const</span> datos = <span class="keyword">await</span> respuesta.<span class="method">json</span>();
+  <span class="keyword">return</span> datos.rates.COP;  <span class="comment">// Ej: 4150.25</span>
+}
+
+<span class="comment">// Se muestra en #tasa-dolar-footer</span></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="http-methods animate-fade-in delay-3">
                     <h3>📬 Métodos HTTP</h3>
                     <div class="methods-grid">
                         <div class="method-card get">
@@ -1257,7 +1280,7 @@ tbody.<span class="method">appendChild</span>(fila);</code></pre>
                     </div>
                 </div>
 
-                <div class="final-summary animate-fade-in delay-3">
+                <div class="final-summary animate-fade-in delay-4">
                     <h3>🎉 ¡Recorrido Completado!</h3>
                     <div class="summary-flow">
                         <div class="summary-item">📄 index.html</div>
