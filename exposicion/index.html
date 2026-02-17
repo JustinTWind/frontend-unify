@@ -732,6 +732,17 @@
                     <p>El corazón de la aplicación - Gestión de ingresos y gastos</p>
                 </div>
 
+                <div class="module-explanation">
+                    <div class="concept-card animate-slide-up">
+                        <h3>🤔 ¿Qué hace este módulo?</h3>
+                        <p>
+                            Gestiona todas las <strong>operaciones financieras</strong> del usuario. 
+                            Permite crear, leer, actualizar y eliminar transacciones (<strong>CRUD completo</strong>), 
+                            además de calcular automáticamente ingresos, gastos y balance total.
+                        </p>
+                    </div>
+                </div>
+
                 <div class="crud-showcase animate-fade-in">
                     <h3>🔄 Operaciones CRUD</h3>
                     <div class="crud-cards">
@@ -860,113 +871,133 @@
                     <p>El puente entre datos y pantalla</p>
                 </div>
 
-                <div class="ui-bridge animate-fade-in">
-                    <div class="bridge-visual">
-                        <div class="bridge-side data-side">
-                            <div class="bridge-icon">💾</div>
-                            <span>Datos JS</span>
-                            <code>transacciones[]</code>
-                        </div>
-                        <div class="bridge-connector">
-                            <div class="bridge-arrow pulse"></div>
-                            <span class="bridge-label">ui.js</span>
-                            <div class="bridge-arrow pulse"></div>
-                        </div>
-                        <div class="bridge-side dom-side">
-                            <div class="bridge-icon">🖥️</div>
-                            <span>DOM HTML</span>
-                            <code>&lt;table&gt;</code>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="ui-functions animate-slide-up delay-1">
-                    <h3>⚡ Funciones del Módulo</h3>
-                    <div class="function-showcase">
-                        <div class="func-card format">
-                            <div class="func-header">
-                                <span class="func-icon">💵</span>
-                                <h4>formatearDinero()</h4>
-                            </div>
-                            <div class="func-example">
-                                <span class="before">3500000</span>
-                                <span class="transform-arrow">→</span>
-                                <span class="after">COP$ 3.500.000</span>
-                            </div>
-                        </div>
-                        <div class="func-card render">
-                            <div class="func-header">
-                                <span class="func-icon">📋</span>
-                                <h4>mostrarTransacciones()</h4>
-                            </div>
-                            <div class="func-example">
-                                <span class="before">Array</span>
-                                <span class="transform-arrow">→</span>
-                                <span class="after">&lt;tr&gt; rows</span>
-                            </div>
-                        </div>
-                        <div class="func-card update">
-                            <div class="func-header">
-                                <span class="func-icon">📊</span>
-                                <h4>actualizarTotales()</h4>
-                            </div>
-                            <div class="func-example">
-                                <span class="before">Balance</span>
-                                <span class="transform-arrow">→</span>
-                                <span class="after">Cards UI</span>
-                            </div>
-                        </div>
-                        <div class="func-card master">
-                            <div class="func-header">
-                                <span class="func-icon">🚀</span>
-                                <h4>actualizarPagina()</h4>
-                            </div>
-                            <div class="func-example">
-                                <span class="before">Llama a</span>
-                                <span class="transform-arrow">→</span>
-                                <span class="after">Todas</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dom-methods animate-fade-in delay-2">
-                    <h3>🔧 Métodos DOM Utilizados</h3>
-                    <div class="methods-showcase">
-                        <div class="method-bubble">
-                            <code>createElement()</code>
-                            <span>Crear elementos</span>
-                        </div>
-                        <div class="method-bubble">
-                            <code>innerHTML</code>
-                            <span>Insertar HTML</span>
-                        </div>
-                        <div class="method-bubble">
-                            <code>appendChild()</code>
-                            <span>Agregar hijos</span>
-                        </div>
-                        <div class="method-bubble">
-                            <code>textContent</code>
-                            <span>Cambiar texto</span>
-                        </div>
-                        <div class="method-bubble">
-                            <code>classList</code>
-                            <span>Manejar clases</span>
-                        </div>
-                        <div class="method-bubble">
-                            <code>getElementById()</code>
-                            <span>Seleccionar ID</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="key-concept animate-fade-in delay-3">
-                    <div class="key-icon">💡</div>
-                    <div class="key-content">
-                        <h4>Renderizado Dinámico</h4>
+                <div class="module-explanation">
+                    <div class="concept-card animate-slide-up">
+                        <h3>🤔 ¿Qué hace este módulo?</h3>
                         <p>
-                            Cada vez que cambian los datos, <code>actualizarPagina()</code> regenera 
-                            completamente la tabla y las tarjetas de totales.
+                            Es el <strong>traductor visual</strong> de la aplicación. Toma los datos 
+                            almacenados (arrays, objetos) y los convierte en <strong>elementos HTML</strong> 
+                            que el usuario puede ver e interactuar. Maneja todo el renderizado dinámico.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Flujo Principal Compacto -->
+                <div class="ui-flow-compact animate-fade-in">
+                    <div class="flow-pipeline">
+                        <div class="pipeline-node data">
+                            <span class="node-icon">📦</span>
+                            <span class="node-text">Array</span>
+                        </div>
+                        <div class="pipeline-arrow">→</div>
+                        <div class="pipeline-node process">
+                            <span class="node-icon">⚙️</span>
+                            <span class="node-text">ui.js</span>
+                        </div>
+                        <div class="pipeline-arrow">→</div>
+                        <div class="pipeline-node output">
+                            <span class="node-icon">🖥️</span>
+                            <span class="node-text">DOM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Funciones en Línea -->
+                <div class="ui-func-strip animate-slide-up delay-1">
+                    <div class="func-strip-item yellow">
+                        <code>formatearDinero()</code>
+                        <span>3500000 → COP$ 3.500.000</span>
+                    </div>
+                    <div class="func-strip-item blue">
+                        <code>mostrarTransacciones()</code>
+                        <span>Array → &lt;table&gt; HTML</span>
+                    </div>
+                    <div class="func-strip-item orange">
+                        <code>actualizarTotales()</code>
+                        <span>Cálculos → Cards UI</span>
+                    </div>
+                    <div class="func-strip-item green">
+                        <code>actualizarPagina()</code>
+                        <span>Ejecuta todas las anteriores</span>
+                    </div>
+                </div>
+
+                <!-- Métodos DOM Detallados -->
+                <div class="dom-grid-section animate-fade-in delay-2">
+                    <h3>🔧 Métodos DOM Utilizados</h3>
+                    <div class="dom-methods-detailed">
+                        <div class="dom-method-detail select">
+                            <div class="method-header">
+                                <span class="method-icon">🎯</span>
+                                <code>document.getElementById()</code>
+                            </div>
+                            <p class="method-desc">Busca y retorna un elemento del DOM usando su atributo <code>id</code>. Es el método más rápido para seleccionar elementos únicos.</p>
+                            <div class="method-example">
+                                <code>document.getElementById('tabla-body')</code>
+                            </div>
+                        </div>
+                        <div class="dom-method-detail create">
+                            <div class="method-header">
+                                <span class="method-icon">➕</span>
+                                <code>document.createElement()</code>
+                            </div>
+                            <p class="method-desc">Crea un nuevo elemento HTML en memoria. El elemento no aparece hasta que se inserte en el DOM con appendChild.</p>
+                            <div class="method-example">
+                                <code>document.createElement('tr')</code>
+                            </div>
+                        </div>
+                        <div class="dom-method-detail insert">
+                            <div class="method-header">
+                                <span class="method-icon">📥</span>
+                                <code>elemento.appendChild()</code>
+                            </div>
+                            <p class="method-desc">Inserta un nodo hijo al final de un elemento padre. Es la forma estándar de agregar elementos al DOM.</p>
+                            <div class="method-example">
+                                <code>tbody.appendChild(fila)</code>
+                            </div>
+                        </div>
+                        <div class="dom-method-detail content">
+                            <div class="method-header">
+                                <span class="method-icon">✏️</span>
+                                <code>elemento.innerHTML</code>
+                            </div>
+                            <p class="method-desc">Propiedad que permite leer o escribir el contenido HTML interno de un elemento. Útil para insertar HTML completo.</p>
+                            <div class="method-example">
+                                <code>celda.innerHTML = '&lt;button&gt;Eliminar&lt;/button&gt;'</code>
+                            </div>
+                        </div>
+                        <div class="dom-method-detail text">
+                            <div class="method-header">
+                                <span class="method-icon">📝</span>
+                                <code>elemento.textContent</code>
+                            </div>
+                            <p class="method-desc">Establece o retorna el contenido de texto de un elemento. Más seguro que innerHTML ya que no interpreta HTML.</p>
+                            <div class="method-example">
+                                <code>span.textContent = formatearDinero(valor)</code>
+                            </div>
+                        </div>
+                        <div class="dom-method-detail class">
+                            <div class="method-header">
+                                <span class="method-icon">🏷️</span>
+                                <code>elemento.classList</code>
+                            </div>
+                            <p class="method-desc">Objeto que permite agregar, remover o alternar clases CSS. Métodos: <code>add()</code>, <code>remove()</code>, <code>toggle()</code>.</p>
+                            <div class="method-example">
+                                <code>fila.classList.add('entrada')</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Concepto Clave -->
+                <div class="key-concept animate-fade-in delay-3">
+                    <div class="key-icon">🔑</div>
+                    <div class="key-content">
+                        <h4>Renderizado Reactivo</h4>
+                        <p>
+                            La función <code>actualizarPagina()</code> regenera el DOM completo cada vez 
+                            que cambian los datos. Este patrón asegura que la interfaz siempre refleje 
+                            el estado actual de la aplicación.
                         </p>
                     </div>
                 </div>

@@ -1424,6 +1424,303 @@ code {
 }
 
 /* ========================================
+   UI REFACTORIZADO - DISEÑO COMPACTO
+   ======================================== */
+
+/* Pipeline de Flujo */
+.ui-flow-compact {
+    margin-bottom: 2rem;
+}
+
+.flow-pipeline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+}
+
+.pipeline-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    transition: all var(--transition-fast);
+}
+
+.pipeline-node.data {
+    background: linear-gradient(135deg, var(--blue-primary)20, transparent);
+    border: 2px solid var(--blue-primary);
+}
+
+.pipeline-node.process {
+    background: linear-gradient(135deg, var(--green-primary)30, transparent);
+    border: 2px solid var(--green-primary);
+    transform: scale(1.1);
+}
+
+.pipeline-node.output {
+    background: linear-gradient(135deg, var(--orange-primary)20, transparent);
+    border: 2px solid var(--orange-primary);
+}
+
+.node-icon {
+    font-size: 1.5rem;
+}
+
+.node-text {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.pipeline-arrow {
+    font-size: 1.5rem;
+    color: var(--green-primary);
+    animation: pulse-arrow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-arrow {
+    0%, 100% { opacity: 1; transform: translateX(0); }
+    50% { opacity: 0.5; transform: translateX(3px); }
+}
+
+/* Strip de Funciones */
+.ui-func-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.func-strip-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg-card);
+    border-radius: 10px;
+    border-left: 4px solid;
+    transition: all var(--transition-fast);
+}
+
+.func-strip-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.func-strip-item.yellow {
+    border-color: var(--yellow-primary);
+}
+
+.func-strip-item.blue {
+    border-color: var(--blue-primary);
+}
+
+.func-strip-item.orange {
+    border-color: var(--orange-primary);
+}
+
+.func-strip-item.green {
+    border-color: var(--green-primary);
+}
+
+.func-strip-item code {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.func-strip-item span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Grid de Métodos DOM */
+.dom-grid-section {
+    margin-bottom: 2rem;
+}
+
+.dom-grid-section h3 {
+    text-align: center;
+    margin-bottom: 1.25rem;
+    font-size: 1.1rem;
+}
+
+.dom-methods-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.dom-method-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    transition: all var(--transition-fast);
+}
+
+.dom-method-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.dom-method-card.select:hover { border-color: var(--blue-primary); }
+.dom-method-card.create:hover { border-color: var(--green-primary); }
+.dom-method-card.insert:hover { border-color: var(--yellow-primary); }
+.dom-method-card.content:hover { border-color: var(--orange-primary); }
+.dom-method-card.text:hover { border-color: var(--purple-primary, #a855f7); }
+.dom-method-card.class:hover { border-color: var(--cyan-primary, #22d3d3); }
+
+.method-icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.method-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.method-info code {
+    font-size: 0.8rem;
+    color: var(--green-primary);
+}
+
+.method-info span {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+/* DOM Methods Detailed - Nuevo diseño expandido */
+.dom-methods-detailed {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
+.dom-method-detail {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: all var(--transition-fast);
+    border-left: 4px solid transparent;
+}
+
+.dom-method-detail:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.dom-method-detail.select { border-left-color: var(--blue-primary); }
+.dom-method-detail.create { border-left-color: var(--green-primary); }
+.dom-method-detail.insert { border-left-color: var(--yellow-primary); }
+.dom-method-detail.content { border-left-color: var(--orange-primary); }
+.dom-method-detail.text { border-left-color: #a855f7; }
+.dom-method-detail.class { border-left-color: #22d3d3; }
+
+.dom-method-detail.select:hover { background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent); }
+.dom-method-detail.create:hover { background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), transparent); }
+.dom-method-detail.insert:hover { background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), transparent); }
+.dom-method-detail.content:hover { background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), transparent); }
+.dom-method-detail.text:hover { background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), transparent); }
+.dom-method-detail.class:hover { background: linear-gradient(135deg, rgba(34, 211, 211, 0.1), transparent); }
+
+.method-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.method-header .method-icon {
+    font-size: 1.25rem;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-darker);
+    border-radius: 8px;
+}
+
+.method-header code {
+    font-size: 0.95rem;
+    color: var(--green-primary);
+    font-weight: 600;
+}
+
+.method-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+
+.method-desc code {
+    font-size: 0.75rem;
+    background: var(--bg-darker);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    color: var(--yellow-primary);
+}
+
+.method-example {
+    background: var(--bg-darker);
+    padding: 0.6rem 0.9rem;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+.method-example code {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+/* Key Concept Inline */
+.ui-key-inline {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--green-primary)15, transparent);
+    border: 1px solid var(--green-primary)50;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.key-badge {
+    background: var(--green-primary);
+    color: var(--bg-dark);
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.ui-key-inline p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.ui-key-inline code {
+    color: var(--green-primary);
+}
+
+/* ========================================
    UI - ESTILOS ESPECÍFICOS
    ======================================== */
 
@@ -2159,6 +2456,15 @@ code {
     .bridge-connector {
         font-size: 1.5rem;
     }
+    
+    /* UI Refactorizado - Tablet */
+    .dom-methods-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .dom-methods-detailed {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
@@ -2280,5 +2586,66 @@ code {
     
     .transaction-anatomy {
         grid-template-columns: 1fr;
+    }
+    
+    /* UI Refactorizado - Mobile */
+    .flow-pipeline {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+    
+    .pipeline-node {
+        padding: 0.75rem 1rem;
+    }
+    
+    .pipeline-node.process {
+        transform: scale(1);
+    }
+    
+    .ui-func-strip {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .dom-methods-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+    
+    .dom-method-card {
+        padding: 0.75rem;
+    }
+    
+    .method-icon {
+        font-size: 1rem;
+    }
+    
+    .ui-key-inline {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+    
+    /* DOM Methods Detailed - Responsive */
+    .dom-methods-detailed {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .dom-method-detail {
+        padding: 1rem;
+    }
+    
+    .method-header code {
+        font-size: 0.85rem;
+    }
+    
+    .method-desc {
+        font-size: 0.8rem;
+    }
+    
+    .method-example code {
+        font-size: 0.7rem;
     }
 }
