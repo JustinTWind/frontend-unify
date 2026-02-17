@@ -997,6 +997,433 @@ code {
 }
 
 /* ========================================
+   TRANSACCIONES - NUEVO DISEÑO
+   ======================================== */
+
+.crud-showcase {
+    margin: 2rem 0;
+}
+
+.crud-showcase h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.crud-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.crud-card {
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+}
+
+.crud-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+}
+
+.crud-card.create::before { background: var(--green-primary); }
+.crud-card.read::before { background: var(--blue-primary); }
+.crud-card.update::before { background: var(--orange-primary); }
+.crud-card.delete::before { background: var(--red-primary); }
+
+.crud-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+.crud-card.create:hover { border-color: var(--green-primary); box-shadow: 0 10px 40px rgba(0, 179, 126, 0.2); }
+.crud-card.read:hover { border-color: var(--blue-primary); box-shadow: 0 10px 40px rgba(88, 166, 255, 0.2); }
+.crud-card.update:hover { border-color: var(--orange-primary); box-shadow: 0 10px 40px rgba(249, 115, 22, 0.2); }
+.crud-card.delete:hover { border-color: var(--red-primary); box-shadow: 0 10px 40px rgba(247, 90, 104, 0.2); }
+
+.crud-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.crud-info {
+    margin-bottom: 0.75rem;
+}
+
+.crud-letter-big {
+    font-size: 2rem;
+    font-weight: 700;
+    display: block;
+}
+
+.crud-card.create .crud-letter-big { color: var(--green-primary); }
+.crud-card.read .crud-letter-big { color: var(--blue-primary); }
+.crud-card.update .crud-letter-big { color: var(--orange-primary); }
+.crud-card.delete .crud-letter-big { color: var(--red-primary); }
+
+.crud-action {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.crud-info code {
+    font-size: 0.7rem;
+    background: var(--bg-darker);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.crud-card p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+/* Transaction Anatomy */
+.transaction-visual {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2.5rem 0;
+}
+
+.transaction-visual h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.transaction-anatomy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.anatomy-item {
+    display: grid;
+    grid-template-columns: 120px 200px 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-darker);
+    border-radius: 8px;
+    transition: all var(--transition-fast);
+}
+
+.anatomy-item:hover {
+    transform: translateX(10px);
+    background: var(--bg-card-hover);
+}
+
+.anatomy-item.highlight-green {
+    border: 1px solid var(--green-primary);
+    box-shadow: 0 0 20px var(--green-glow);
+}
+
+.anatomy-key {
+    font-family: 'Fira Code', monospace;
+    color: var(--purple-primary);
+    font-weight: 500;
+}
+
+.anatomy-value {
+    font-family: 'Fira Code', monospace;
+    color: var(--green-primary);
+}
+
+.anatomy-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Calc Section */
+.calc-section {
+    margin: 2.5rem 0;
+}
+
+.calc-section h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.calc-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.calc-box {
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    min-width: 180px;
+    transition: all var(--transition-medium);
+}
+
+.calc-box:hover {
+    transform: scale(1.05);
+}
+
+.calc-box.entrada { border-color: var(--green-primary); }
+.calc-box.salida { border-color: var(--red-primary); }
+.calc-box.balance { border-color: var(--blue-primary); background: var(--bg-darker); }
+
+.calc-icon {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.calc-name {
+    display: block;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.calc-result {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.calc-box.entrada .calc-result { color: var(--green-primary); }
+.calc-box.salida .calc-result { color: var(--red-primary); }
+.calc-box.balance .calc-result { color: var(--blue-primary); }
+
+.calc-operator {
+    font-size: 2rem;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+/* ========================================
+   UI.JS - NUEVO DISEÑO
+   ======================================== */
+
+.ui-bridge {
+    margin: 2rem 0;
+}
+
+.bridge-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+}
+
+.bridge-side {
+    text-align: center;
+    padding: 2rem;
+    background: var(--bg-darker);
+    border-radius: 12px;
+    min-width: 150px;
+    transition: all var(--transition-medium);
+}
+
+.bridge-side:hover {
+    transform: scale(1.05);
+}
+
+.data-side {
+    border: 2px solid var(--purple-primary);
+}
+
+.dom-side {
+    border: 2px solid var(--orange-primary);
+}
+
+.bridge-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.bridge-side span {
+    display: block;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.bridge-side code {
+    font-size: 0.85rem;
+    background: var(--bg-card);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.bridge-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.bridge-arrow {
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green-primary), var(--green-light));
+    border-radius: 2px;
+}
+
+.bridge-arrow.pulse {
+    animation: arrow-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes arrow-pulse {
+    0%, 100% { transform: scaleX(1); opacity: 1; }
+    50% { transform: scaleX(1.3); opacity: 0.7; }
+}
+
+.bridge-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    color: var(--green-primary);
+    font-weight: 600;
+    background: var(--bg-darker);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 1px solid var(--green-primary);
+}
+
+.ui-functions {
+    margin: 2.5rem 0;
+}
+
+.ui-functions h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.function-showcase {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.func-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all var(--transition-medium);
+}
+
+.func-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.func-card.format:hover { border-color: var(--yellow-primary); }
+.func-card.render:hover { border-color: var(--blue-primary); }
+.func-card.update:hover { border-color: var(--orange-primary); }
+.func-card.master:hover { border-color: var(--green-primary); }
+
+.func-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.func-icon {
+    font-size: 1.5rem;
+}
+
+.func-header h4 {
+    font-size: 0.85rem;
+    font-family: 'Fira Code', monospace;
+    color: var(--text-primary);
+}
+
+.func-example {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background: var(--bg-darker);
+    border-radius: 8px;
+    font-size: 0.8rem;
+}
+
+.func-example .before {
+    color: var(--text-muted);
+    font-family: 'Fira Code', monospace;
+}
+
+.func-example .transform-arrow {
+    color: var(--green-primary);
+    font-weight: bold;
+}
+
+.func-example .after {
+    color: var(--green-primary);
+    font-family: 'Fira Code', monospace;
+}
+
+.dom-methods {
+    margin: 2.5rem 0;
+}
+
+.dom-methods h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.methods-showcase {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.method-bubble {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    transition: all var(--transition-fast);
+}
+
+.method-bubble:hover {
+    transform: scale(1.1);
+    border-color: var(--green-primary);
+    box-shadow: 0 5px 20px var(--green-glow);
+}
+
+.method-bubble code {
+    font-size: 0.85rem;
+    color: var(--green-primary);
+}
+
+.method-bubble span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* ========================================
    UI - ESTILOS ESPECÍFICOS
    ======================================== */
 
@@ -1715,6 +2142,23 @@ code {
         0%, 100% { transform: translateY(0) rotate(-90deg); opacity: 1; }
         50% { transform: translateY(5px) rotate(-90deg); opacity: 0.6; }
     }
+    
+    /* Responsive para nuevos componentes */
+    .crud-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .function-showcase {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .bridge-visual {
+        gap: 1rem;
+    }
+    
+    .bridge-connector {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1791,5 +2235,50 @@ code {
     .id-tag {
         padding: 0.5rem 1rem;
         font-size: 0.75rem;
+    }
+    
+    /* Responsive para nuevos componentes */
+    .crud-cards {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    
+    .crud-card {
+        padding: 1.25rem;
+    }
+    
+    .function-showcase {
+        grid-template-columns: 1fr;
+    }
+    
+    .bridge-visual {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .bridge-connector {
+        transform: rotate(90deg);
+    }
+    
+    .calc-flow {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .calc-box.operator {
+        transform: rotate(90deg);
+    }
+    
+    .method-bubbles {
+        gap: 0.75rem;
+    }
+    
+    .method-bubble {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.85rem;
+    }
+    
+    .transaction-anatomy {
+        grid-template-columns: 1fr;
     }
 }

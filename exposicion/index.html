@@ -729,117 +729,108 @@
                 <div class="section-header">
                     <span class="section-badge transacciones-badge">💰 Módulo 3</span>
                     <h2>transacciones.js</h2>
-                    <p>Módulo de Transacciones - CRUD de ingresos y gastos</p>
+                    <p>El corazón de la aplicación - Gestión de ingresos y gastos</p>
                 </div>
 
-                <div class="module-explanation">
-                    <div class="concept-card animate-slide-up">
-                        <h3>🤔 ¿Qué hace este módulo?</h3>
+                <div class="crud-showcase animate-fade-in">
+                    <h3>🔄 Operaciones CRUD</h3>
+                    <div class="crud-cards">
+                        <div class="crud-card create">
+                            <div class="crud-icon">➕</div>
+                            <div class="crud-info">
+                                <span class="crud-letter-big">C</span>
+                                <span class="crud-action">Create</span>
+                                <code>agregarTransaccion()</code>
+                            </div>
+                            <p>Crea una nueva transacción con ID único</p>
+                        </div>
+                        <div class="crud-card read">
+                            <div class="crud-icon">📖</div>
+                            <div class="crud-info">
+                                <span class="crud-letter-big">R</span>
+                                <span class="crud-action">Read</span>
+                                <code>obtenerTransacciones()</code>
+                            </div>
+                            <p>Lee todas las transacciones del usuario</p>
+                        </div>
+                        <div class="crud-card update">
+                            <div class="crud-icon">✏️</div>
+                            <div class="crud-info">
+                                <span class="crud-letter-big">U</span>
+                                <span class="crud-action">Update</span>
+                                <code>guardarTransacciones()</code>
+                            </div>
+                            <p>Actualiza el array en localStorage</p>
+                        </div>
+                        <div class="crud-card delete">
+                            <div class="crud-icon">🗑️</div>
+                            <div class="crud-info">
+                                <span class="crud-letter-big">D</span>
+                                <span class="crud-action">Delete</span>
+                                <code>eliminarTransaccion()</code>
+                            </div>
+                            <p>Elimina por ID usando filter()</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="transaction-visual animate-slide-up delay-1">
+                    <h3>📦 Anatomía de una Transacción</h3>
+                    <div class="transaction-anatomy">
+                        <div class="anatomy-item">
+                            <span class="anatomy-key">id</span>
+                            <span class="anatomy-value">1706284900000</span>
+                            <span class="anatomy-desc">Date.now() único</span>
+                        </div>
+                        <div class="anatomy-item">
+                            <span class="anatomy-key">descripcion</span>
+                            <span class="anatomy-value">"Salario mensual"</span>
+                            <span class="anatomy-desc">Texto descriptivo</span>
+                        </div>
+                        <div class="anatomy-item">
+                            <span class="anatomy-key">valor</span>
+                            <span class="anatomy-value">3500000</span>
+                            <span class="anatomy-desc">Número parseFloat()</span>
+                        </div>
+                        <div class="anatomy-item highlight-green">
+                            <span class="anatomy-key">tipo</span>
+                            <span class="anatomy-value">"entrada"</span>
+                            <span class="anatomy-desc">entrada | salida</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-section animate-fade-in delay-2">
+                    <h3>🧮 Funciones de Cálculo</h3>
+                    <div class="calc-flow">
+                        <div class="calc-box entrada">
+                            <span class="calc-icon">📈</span>
+                            <span class="calc-name">calcularEntradas()</span>
+                            <span class="calc-result">+$3,500,000</span>
+                        </div>
+                        <div class="calc-operator">−</div>
+                        <div class="calc-box salida">
+                            <span class="calc-icon">📉</span>
+                            <span class="calc-name">calcularSalidas()</span>
+                            <span class="calc-result">−$1,200,000</span>
+                        </div>
+                        <div class="calc-operator">=</div>
+                        <div class="calc-box balance">
+                            <span class="calc-icon">💰</span>
+                            <span class="calc-name">calcularBalance()</span>
+                            <span class="calc-result">$2,300,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-concept animate-fade-in delay-3">
+                    <div class="key-icon">🔑</div>
+                    <div class="key-content">
+                        <h4>Clave única por usuario</h4>
                         <p>
-                            Es el corazón de la aplicación. Maneja todas las operaciones 
-                            <strong>CRUD</strong> (Crear, Leer, Actualizar, Eliminar) de las transacciones 
-                            financieras. También calcula los totales.
+                            Las transacciones se guardan con <code>transacciones_{userId}</code> para
+                            que cada usuario tenga sus propios datos separados.
                         </p>
-                    </div>
-
-                    <div class="crud-grid animate-fade-in delay-1">
-                        <div class="crud-item create">
-                            <span class="crud-letter">C</span>
-                            <span class="crud-word">Create</span>
-                            <span class="crud-func">agregarTransaccion()</span>
-                        </div>
-                        <div class="crud-item read">
-                            <span class="crud-letter">R</span>
-                            <span class="crud-word">Read</span>
-                            <span class="crud-func">obtenerTransacciones()</span>
-                        </div>
-                        <div class="crud-item update">
-                            <span class="crud-letter">U</span>
-                            <span class="crud-word">Update</span>
-                            <span class="crud-func">-</span>
-                        </div>
-                        <div class="crud-item delete">
-                            <span class="crud-letter">D</span>
-                            <span class="crud-word">Delete</span>
-                            <span class="crud-func">eliminarTransaccion()</span>
-                        </div>
-                    </div>
-
-                    <div class="transaction-structure animate-slide-up delay-2">
-                        <h3>📦 Estructura de una Transacción</h3>
-                        <pre><code class="language-js">{
-    <span class="property">id</span>: <span class="number">1706284900000</span>,
-    <span class="property">descripcion</span>: <span class="string">"Salario mensual"</span>,
-    <span class="property">valor</span>: <span class="number">3500000</span>,
-    <span class="property">categoria</span>: <span class="string">"Trabajo"</span>,
-    <span class="property">tipo</span>: <span class="string">"entrada"</span>,      <span class="comment">// "entrada" o "salida"</span>
-    <span class="property">fecha</span>: <span class="string">"26/1/2026"</span>
-}</code></pre>
-                    </div>
-
-                    <div class="code-section animate-slide-up delay-2">
-                        <h3>📝 Funciones Principales</h3>
-                        
-                        <div class="function-card">
-                            <div class="function-header">
-                                <span class="function-name">agregarTransaccion(descripcion, valor, categoria, tipo)</span>
-                                <span class="function-tag create">Crear</span>
-                            </div>
-                            <div class="function-body">
-                                <p>Crea una nueva transacción y la guarda al inicio del array.</p>
-                                <pre><code class="language-js"><span class="keyword">const</span> nuevaTransaccion = {
-    <span class="property">id</span>: <span class="object">Date</span>.<span class="method">now</span>(),
-    <span class="property">descripcion</span>: descripcion,
-    <span class="property">valor</span>: <span class="function">parseFloat</span>(valor),
-    <span class="property">categoria</span>: categoria,
-    <span class="property">tipo</span>: tipo,
-    <span class="property">fecha</span>: <span class="keyword">new</span> <span class="object">Date</span>().<span class="method">toLocaleDateString</span>()
-};
-transacciones.<span class="method">unshift</span>(nuevaTransaccion); <span class="comment">// Al inicio</span></code></pre>
-                            </div>
-                        </div>
-
-                        <div class="function-card">
-                            <div class="function-header">
-                                <span class="function-name">buscarTransacciones(termino)</span>
-                                <span class="function-tag search">Buscar</span>
-                            </div>
-                            <div class="function-body">
-                                <p>Filtra transacciones por descripción o categoría.</p>
-                                <pre><code class="language-js"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i < transacciones.length; i++) {
-    <span class="keyword">const</span> descripcion = transacciones[i].descripcion.<span class="method">toLowerCase</span>();
-    <span class="keyword">if</span> (descripcion.<span class="method">indexOf</span>(termino) !== -<span class="number">1</span>) {
-        resultados.<span class="method">push</span>(transacciones[i]);
-    }
-}</code></pre>
-                            </div>
-                        </div>
-
-                        <div class="function-card">
-                            <div class="function-header">
-                                <span class="function-name">calcularEntradas() / calcularSalidas() / calcularBalance()</span>
-                                <span class="function-tag calc">Calcular</span>
-                            </div>
-                            <div class="function-body">
-                                <p>Calculan los totales sumando las transacciones según su tipo.</p>
-                                <pre><code class="language-js"><span class="keyword">function</span> <span class="function">calcularBalance</span>() {
-    <span class="keyword">const</span> entradas = <span class="function">calcularEntradas</span>();
-    <span class="keyword">const</span> salidas = <span class="function">calcularSalidas</span>();
-    <span class="keyword">return</span> entradas - salidas;
-}</code></pre>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="key-concept animate-fade-in delay-3">
-                        <div class="key-icon">🔑</div>
-                        <div class="key-content">
-                            <h4>Clave única por usuario</h4>
-                            <p>
-                                Las transacciones se guardan con la clave <code>transacciones_{userId}</code>. 
-                                Esto permite que cada usuario tenga sus propias transacciones separadas.
-                            </p>
-                        </div>
                     </div>
                 </div>
 
@@ -866,123 +857,117 @@ transacciones.<span class="method">unshift</span>(nuevaTransaccion); <span class
                 <div class="section-header">
                     <span class="section-badge ui-badge">🖥️ Módulo 4</span>
                     <h2>ui.js</h2>
-                    <p>Módulo de Interfaz - Actualización del DOM</p>
+                    <p>El puente entre datos y pantalla</p>
                 </div>
 
-                <div class="module-explanation">
-                    <div class="concept-card animate-slide-up">
-                        <h3>🤔 ¿Qué hace este módulo?</h3>
+                <div class="ui-bridge animate-fade-in">
+                    <div class="bridge-visual">
+                        <div class="bridge-side data-side">
+                            <div class="bridge-icon">💾</div>
+                            <span>Datos JS</span>
+                            <code>transacciones[]</code>
+                        </div>
+                        <div class="bridge-connector">
+                            <div class="bridge-arrow pulse"></div>
+                            <span class="bridge-label">ui.js</span>
+                            <div class="bridge-arrow pulse"></div>
+                        </div>
+                        <div class="bridge-side dom-side">
+                            <div class="bridge-icon">🖥️</div>
+                            <span>DOM HTML</span>
+                            <code>&lt;table&gt;</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui-functions animate-slide-up delay-1">
+                    <h3>⚡ Funciones del Módulo</h3>
+                    <div class="function-showcase">
+                        <div class="func-card format">
+                            <div class="func-header">
+                                <span class="func-icon">💵</span>
+                                <h4>formatearDinero()</h4>
+                            </div>
+                            <div class="func-example">
+                                <span class="before">3500000</span>
+                                <span class="transform-arrow">→</span>
+                                <span class="after">COP$ 3.500.000</span>
+                            </div>
+                        </div>
+                        <div class="func-card render">
+                            <div class="func-header">
+                                <span class="func-icon">📋</span>
+                                <h4>mostrarTransacciones()</h4>
+                            </div>
+                            <div class="func-example">
+                                <span class="before">Array</span>
+                                <span class="transform-arrow">→</span>
+                                <span class="after">&lt;tr&gt; rows</span>
+                            </div>
+                        </div>
+                        <div class="func-card update">
+                            <div class="func-header">
+                                <span class="func-icon">📊</span>
+                                <h4>actualizarTotales()</h4>
+                            </div>
+                            <div class="func-example">
+                                <span class="before">Balance</span>
+                                <span class="transform-arrow">→</span>
+                                <span class="after">Cards UI</span>
+                            </div>
+                        </div>
+                        <div class="func-card master">
+                            <div class="func-header">
+                                <span class="func-icon">🚀</span>
+                                <h4>actualizarPagina()</h4>
+                            </div>
+                            <div class="func-example">
+                                <span class="before">Llama a</span>
+                                <span class="transform-arrow">→</span>
+                                <span class="after">Todas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dom-methods animate-fade-in delay-2">
+                    <h3>🔧 Métodos DOM Utilizados</h3>
+                    <div class="methods-showcase">
+                        <div class="method-bubble">
+                            <code>createElement()</code>
+                            <span>Crear elementos</span>
+                        </div>
+                        <div class="method-bubble">
+                            <code>innerHTML</code>
+                            <span>Insertar HTML</span>
+                        </div>
+                        <div class="method-bubble">
+                            <code>appendChild()</code>
+                            <span>Agregar hijos</span>
+                        </div>
+                        <div class="method-bubble">
+                            <code>textContent</code>
+                            <span>Cambiar texto</span>
+                        </div>
+                        <div class="method-bubble">
+                            <code>classList</code>
+                            <span>Manejar clases</span>
+                        </div>
+                        <div class="method-bubble">
+                            <code>getElementById()</code>
+                            <span>Seleccionar ID</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-concept animate-fade-in delay-3">
+                    <div class="key-icon">💡</div>
+                    <div class="key-content">
+                        <h4>Renderizado Dinámico</h4>
                         <p>
-                            Este módulo se encarga de <strong>actualizar la interfaz</strong> cuando los datos cambian. 
-                            Es el puente entre los datos (transacciones) y lo que el usuario ve en pantalla.
+                            Cada vez que cambian los datos, <code>actualizarPagina()</code> regenera 
+                            completamente la tabla y las tarjetas de totales.
                         </p>
-                    </div>
-
-                    <div class="dom-diagram animate-fade-in delay-1">
-                        <h3>🔄 Flujo de Actualización</h3>
-                        <div class="dom-flow">
-                            <div class="dom-step">
-                                <div class="dom-icon">📊</div>
-                                <span>Datos (Arrays)</span>
-                            </div>
-                            <svg class="dom-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                            <div class="dom-step">
-                                <div class="dom-icon">⚙️</div>
-                                <span>ui.js</span>
-                            </div>
-                            <svg class="dom-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                            <div class="dom-step">
-                                <div class="dom-icon">🖥️</div>
-                                <span>DOM (HTML)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="code-section animate-slide-up delay-2">
-                        <h3>📝 Funciones Principales</h3>
-                        
-                        <div class="function-card">
-                            <div class="function-header">
-                                <span class="function-name">formatearDinero(numero)</span>
-                                <span class="function-tag format">Formato</span>
-                            </div>
-                            <div class="function-body">
-                                <p>Convierte número a formato de moneda colombiana.</p>
-                                <pre><code class="language-js"><span class="keyword">function</span> <span class="function">formatearDinero</span>(numero) {
-    <span class="keyword">const</span> formato = numero.<span class="method">toLocaleString</span>(<span class="string">"es-CO"</span>, {
-        <span class="property">minimumFractionDigits</span>: <span class="number">2</span>
-    });
-    <span class="keyword">return</span> <span class="string">"COP$ "</span> + formato;
-}
-<span class="comment">// 3500000 → "COP$ 3.500.000,00"</span></code></pre>
-                            </div>
-                        </div>
-
-                        <div class="function-card">
-                            <div class="function-header">
-                                <span class="function-name">mostrarTransacciones(transacciones)</span>
-                                <span class="function-tag render">Renderizar</span>
-                            </div>
-                            <div class="function-body">
-                                <p>Genera dinámicamente las filas de la tabla de transacciones.</p>
-                                <pre><code class="language-js"><span class="keyword">const</span> fila = document.<span class="method">createElement</span>(<span class="string">"tr"</span>);
-fila.innerHTML = 
-    <span class="string">'&lt;td&gt;'</span> + transaccion.descripcion + <span class="string">'&lt;/td&gt;'</span> +
-    <span class="string">'&lt;td class="'</span> + clase + <span class="string">'"&gt;'</span> + valor + <span class="string">'&lt;/td&gt;'</span> +
-    <span class="string">'&lt;td&gt;'</span> + transaccion.categoria + <span class="string">'&lt;/td&gt;'</span>;
-tbody.<span class="method">appendChild</span>(fila);</code></pre>
-                            </div>
-                        </div>
-
-                        <div class="function-card">
-                            <div class="function-header">
-                                <span class="function-name">actualizarTotales()</span>
-                                <span class="function-tag update">Actualizar</span>
-                            </div>
-                            <div class="function-body">
-                                <p>Actualiza las tarjetas de entradas, salidas y balance.</p>
-                                <pre><code class="language-js"><span class="keyword">function</span> <span class="function">actualizarTotales</span>() {
-    <span class="keyword">const</span> entradas = <span class="function">calcularEntradas</span>();
-    <span class="keyword">const</span> salidas = <span class="function">calcularSalidas</span>();
-    <span class="keyword">const</span> balance = <span class="function">calcularBalance</span>();
-    
-    tarjetas[<span class="number">0</span>].textContent = <span class="function">formatearDinero</span>(entradas);
-    tarjetas[<span class="number">1</span>].textContent = <span class="function">formatearDinero</span>(salidas);
-    tarjetas[<span class="number">2</span>].textContent = <span class="function">formatearDinero</span>(balance);
-}</code></pre>
-                            </div>
-                        </div>
-
-                        <div class="function-card">
-                            <div class="function-header">
-                                <span class="function-name">actualizarPagina()</span>
-                                <span class="function-tag main">Principal</span>
-                            </div>
-                            <div class="function-body">
-                                <p>Función maestra que actualiza toda la interfaz.</p>
-                                <pre><code class="language-js"><span class="keyword">function</span> <span class="function">actualizarPagina</span>() {
-    <span class="keyword">const</span> transacciones = <span class="function">obtenerTransacciones</span>();
-    <span class="function">mostrarTransacciones</span>(transacciones);
-    <span class="function">actualizarTotales</span>();
-}</code></pre>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="key-concept animate-fade-in delay-3">
-                        <div class="key-icon">🔄</div>
-                        <div class="key-content">
-                            <h4>Manipulación del DOM</h4>
-                            <p>
-                                Usamos métodos como <code>document.createElement()</code>, 
-                                <code>element.innerHTML</code> y <code>element.appendChild()</code> 
-                                para crear y agregar elementos HTML dinámicamente desde JavaScript.
-                            </p>
-                        </div>
                     </div>
                 </div>
 
